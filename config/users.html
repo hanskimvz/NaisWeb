@@ -1,0 +1,135 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+$fname ="/usr/hbin/param.db";
+$db = new SQLite3($fname);
+$sq = "select * from user_tbl";
+$rs = $db->query($sq);
+
+$level = array("Administrator", "Operator","Viewer");
+
+$tag_userlist = '';
+while ($row = $rs->fetchArray()) {
+	// print_r($row);
+	$user_info =  $row['id'].FillText($level[$row['level']], 30, "right");
+	$tag_userlist .= '<option value="'.$row['prino'].'">'.$user_info.'</option>';
+}
+$db->close();
+
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup > Maintenance ></span><strong >Users</strong></p>
+				<div class="container-fluid">
+					<div class="row col-lg-6">
+						<div class="card col-md-12">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">User List</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<select id="formUserList" class="form-control" size="10"><?=$tag_userlist?></select>
+								</div>
+								<div class="form-group mb-0">
+									<button id="btnAdd" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>Add...</span></button>
+									<button id="btnModify" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>Modify...</span></button>
+									<button id="btnRemove" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userDelModal"><span>Remove</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row  col-lg-6 mt-4">
+						<div class="card col-md-12">	
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">User Authentication</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="formAnonymous" />
+									<span>Enable anonymous viewer login (no user name or password required)</span>
+								</label>
+								<div class="form-group">
+									<button id="btnApply" class="btn btn-primary btn-sm ml-2">Apply</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Add, modify Modal-->
+    <div class="modal fade" id="userInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">User Information</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+					<div class="form-group form-inline">
+						<span class="col-md-5">User name :</span>
+						<input type="text" id="formUserName" class="form-control" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Password :</span>
+						<input type="password" id="formUserPassword" class="form-control"/>
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Confirm password :</span>
+						<input type="password" id="formUserConfirmPassword" class="form-control"/>
+					</div>
+					
+					
+					<div class="form-group ml-3">
+						<label>User Group</label>
+						<div class="form-group ml-2">
+							<label for="formUserGroup0" class="form-check" >
+								<input type="radio" id="formUserGroup0" name="formUserGroup" value="viewer" class="form-check-input" />
+								<span class="form-check-label">Viewer</span>
+							</label>
+							<label for="formUserGroup1" class="form-check">
+								<input type="radio" id="formUserGroup1" name="formUserGroup" value="viewer" class="form-check-input" />
+								<span class="form-check-label">Operator</span>
+							</label>
+							<label for="formUserGroup2" class="form-check">
+								<input type="radio" id="formUserGroup2" name="formUserGroup" value="viewer" class="form-check-input" />
+								<span class="form-check-label">Administrator</span>
+							</label>
+						</div>
+					</div>										
+				</div>
+                <div class="modal-footer">
+                    <button id="modalCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="modalApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+</div>
+
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+</script>
+
+</html>
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+$fname ="/usr/hbin/param.db";
+$db = new SQLite3($fname);
+$sq = "select * from param_tbl where group1='network'";
+$rs = $db->query($sq);
+
+$arr_rs= array();
+
+while ($row = $rs->fetchArray()) {
+	// print_r($row);
+	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
+}
+$db->close();
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup &gt; Video &amp; Audio &gt;</span><strong> Burnt-in Text</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration`</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="formEncoderPFEnable_stream_0" class="form-check-input"  <?=($arr_rs['ENCODER.Ch0.Videocodec.St0.enable']=='yes'?"checked":"")?>/>
+									<span>Enable B-I Text</span>
+								</label>
+								<div class="form-group ml-2">
+									<div class="form-inline mb-3">
+										<span class="col-md-2">Include text :</span>
+										<label class="form-check">
+											<input type="checkbox" id="formBitxtDateEnable" class="form-check-input" />
+											<span> Date</span>
+										</label>
+										<label class="form-check">
+											<input type="checkbox" id="formBitxtTimeEnable" class="form-check-input ml-2" />
+											<span> Time</span>
+										</label>
+										<label class="form-check">
+											<input type="checkbox" id="formBitxtNameEnable" class="form-check-input ml-2" />
+											<span> Name</span>
+										</label>
+									</div>
+									<span>Text Format</span>
+									<div class="form-inline">
+										<span class="col-md-2">Name: </span>
+										<input type="text" id="formBitxtName" class="form-control-custom" size="30" />
+										<label>(Max 48 characters)</label>
+									</div>
+									<label class="form-check mb-3 mt-2">
+										<input type="checkbox" id="formBitxtTimeMillisec" class="form-check-input"/>
+										<span>Enable milliseconds for time display</span>
+									</label>
+									<span>Text Position</span>
+									<div class="form-inline">
+										<span class="col-md-2">Date position :</span>
+										<span class="col-md-2">Predefined :</span>
+										<select id="formBitxtDatePosition" class="form-control-custom mr-2">
+											<option value="custom">Percentage X,Y</option>
+											<option value="10:10">Top-left</option>
+											<option value="10:90">Bottom-left</option>
+											<option value="90:10">Top-right</option>
+											<option value="90:90">Bottom-right</option>
+										</select>
+										<label>X :</label>
+										<input type="text" id="formBitxtDatePositionX" class="form-control-custom text-center" size="3" />
+										<label>%</label>
+										<label>,</label>
+										<label>Y :</label>
+										<input type="text" id="formBitxtDatePositionY" class="form-control-custom text-center" size="3" />
+										<label>%</label>
+									</div>
+									<div class="form-inline mt-2">
+										<span class="col-md-2">Time position :</span>
+										<span class="col-md-2">Predefined :</span>
+										<select id="formBitxtTimePosition" class="form-control-custom mr-2">
+											<option value="custom">Percentage X,Y</option>
+											<option value="10:10">Top-left</option>
+											<option value="10:90">Bottom-left</option>
+											<option value="90:10">Top-right</option>
+											<option value="90:90">Bottom-right</option>
+										</select>
+										<label>X :</label>
+										<input type="text" id="formBitxtTimePositionX" class="form-control-custom text-center" size="3" />
+										<label>%</label>
+										<label>,</label>
+										<label>Y :</label>
+										<input type="text" id="formBitxtTimePositionY" class="form-control-custom text-center" size="3" />
+										<label>%</label>
+									</div>
+									<div class="form-inline mt-2">
+										<span class="col-md-2">Name position :</span>
+										<span class="col-md-2">Predefined :</span>
+										<select id="formBitxtNamePosition" class="form-control-custom mr-2">
+											<option value="custom">Percentage X,Y</option>
+											<option value="10:10">Top-left</option>
+											<option value="10:90">Bottom-left</option>
+											<option value="90:10">Top-right</option>
+											<option value="90:90">Bottom-right</option>
+										</select>
+										<label>X :</label>
+										<input type="text" id="formBitxtNamePositionX" class="form-control-custom text-center" size="3" />
+										<label>%</label>
+										<label>,</label>
+										<label>Y :</label>
+										<input type="text" id="formBitxtNamePositionY" class="form-control-custom text-center" size="3" />
+										<label>%</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<button id="btnApply"  class="btn btn-sm btn-primary ">Apply</button>
+						<button id="btnView"   class="btn btn-sm btn-info ml-4">View</button>
+						<button id="btnPopup"  class="btn btn-sm btn-warning ml-4">Pop-up</button>
+					</div>
+				</div>
+			</div>
+			<div id="viewToggle" class="box dsp_show_block text_cen"></div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+	<div id="btn" class="box" align="center">
+		<span id="noIEMsg"></span>
+	</div>
+
+</body>
+</html>

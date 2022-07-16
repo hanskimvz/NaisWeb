@@ -1,0 +1,83 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+$fname ="/usr/hbin/param.db";
+$db = new SQLite3($fname);
+$sq = "select * from param_tbl where group1='network'";
+$rs = $db->query($sq);
+
+$arr_rs= array();
+
+while ($row = $rs->fetchArray()) {
+	// print_r($row);
+	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
+}
+$db->close();
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup &gt; Video &amp; Audio &gt;</span><strong> Zoom/Focus</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Movement</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline">
+									<span class="col-md-2">(Zoom)</span>
+									<span class="col-md-1 mr-1">Wide</span>
+										<button id="zoom_r3" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/left3.gif" /></button>
+										<button id="zoom_r2" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/left2.gif" /></button>
+										<button id="zoom_r1" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/left1.gif" /></button>
+										<button id="zoom_l1" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/right1.gif" /></button>
+										<button id="zoom_l2" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/right2.gif" /></button>
+										<button id="zoom_l3" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/right3.gif" /></button>
+									<span class="ml-2"> Tele</span>
+								</div>
+								<div class="form-group form-inline mb-0">
+									<span class="col-md-2">(Focus) </span>
+									<span class="col-md-1 mr-1">Near</span>
+										<button id="focus_l3" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/left3.gif" /></button>
+										<button id="focus_l2" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/left2.gif" /></button>
+										<button id="focus_l1" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/left1.gif" /></button>
+										<button id="far_r1" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/right1.gif" /></button>
+										<button id="far_r2" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/right2.gif" /></button>
+										<button id="far_r3" class="btn btn-sm"><img class="ui-button" width="16" height="16" src="../../images/right3.gif" /></button>									
+									<span class="ml-2">Far</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Calibration</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<span class="col-md-3">Zoom / Focus</span>
+									<button id="btnZoomFocus" class="btn btn-mini btn-warning">Calibrate</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="viewToggle" class="row mt-2 tex-center">
+						<iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	./encode_app -split 3 -ch 0 -i v4l2 -dev /dev/video3 -o rtsp -w 1920 -h 1080 -ch 1 -i v4l2 -dev /dev/video4 -o rtsp -w 1280 -h 720 -ch 1 -i v4l2 -dev /dev/video4 -o /usr/html/test.jpeg -w 1280 -h 720 -conf video_sample.conf
+
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+</html>

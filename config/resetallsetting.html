@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+$fname ="/usr/hbin/param.db";
+$db = new SQLite3($fname);
+$sq = "select * from param_tbl where group1='network'";
+$rs = $db->query($sq);
+
+$arr_rs= array();
+
+while ($row = $rs->fetchArray()) {
+	// print_r($row);
+	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
+}
+$db->close();
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup &gt; Maintenance &gt;</span><strong> Reset All Settings</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Reset All Settings</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<span>Reset all configuration settings, but:</span>
+									<label class="form-check mt-1">
+										<input type="checkbox" id="networkInfo" checked />
+										<span> Preserve network settings<span>
+									</label>
+									<label class="form-check">
+										<input type="checkbox" id="userInfo" checked />
+										<span> Preserve user account information<span>
+									</label>
+									<label class="form-check">
+										<input type="checkbox" id="timezoneInfo" checked />
+										<span>  Preserve timezone setting<span>
+									</label>
+								</div>
+								<button id="btnFactory" class="btn btn-sm btn-primary">Reset All Settings</button>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+<?=$footer?>
+</body>
+</html>	
+

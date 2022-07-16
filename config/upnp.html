@@ -1,0 +1,56 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+$fname ="/usr/hbin/param.db";
+$db = new SQLite3($fname);
+$sq = "select * from param_tbl where group1='network' and group2='upnp'";
+$rs = $db->query($sq);
+
+$arr_rs= array();
+while ($row = $rs->fetchArray()) {
+	// print_r($row);
+	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
+}
+$db->close();
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup > Network Configuration ></span><strong> UPnP</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-text ml-2">
+									<input type="checkbox" id="formUpnpEnable" class="form-check-input" <?=($arr_rs['NETWORK.Upnp.enable']=="yes"?"checked":"")?>/>
+									<span>Enable</span>
+								</label>
+								<div class="form-group form-inline">
+									<span class="col-md-3">Friendly name : </span>
+									<input type="text" id="formUpnpFriName" value="<?=$arr_rs['NETWORK.Upnp.friendlyname']?>" class="form-control-custom col-md-9" />
+								</div>
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("#btnApply").on("click", function (){
+	console.log(this);
+});
+</script>
+</html>
