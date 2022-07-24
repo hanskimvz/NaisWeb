@@ -28,19 +28,19 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup &gt; Event Configuration &gt;</span><strong > Event Rules</strong></p>
+				<p class="menuLocationInfo"><span>Setup</span> &gt; <span>eventConf</span> &gt; <strong><span>eventrules</span></strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
+								<h6 class="m-0 font-weight-bold text-primary"><span>configuration</span></h6>
 							</div>
 							<div class="card-body">
 								<label class="form-check">
 									<input type="checkbox" id="formEventRulesEnable" class="form-check-input"/>
 									<span>Enable event rules</span>
 								</label>
-								<button id="btnApply" class="btn btn-mini btn-primary">Apply</button>
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
 							</div>
 						</div>
 					</div>
@@ -264,6 +264,7 @@ echo $header;
     </div>
 </body>
 <?=$footer?>
+
 <script>
 function loadEvnetProfile(){
 	url = "/config/query_config.php?page=event_profile";

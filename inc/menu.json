@@ -11,10 +11,10 @@
             { "lang_key":"camera",          "id": "va_camera",          "href": "camera.html", "flag": "y" },
             { "lang_key":"zoomfocus",       "id": "va_zoomfocus",       "href": "zoomfocus.html", "flag": "y" },
             { "lang_key":"burntintext",     "id": "va_burntintext",     "href": "burntintext.html", "flag": "y" },
-            { "lang_key":"encoderprofile",  "id": "va_encoderprofile",  "href": "encoderprofile.html", "flag": "y" },
+            { "lang_key":"encoderprofile",  "id": "va_encoderprofile",  "href": "encoderprofile.html", "flag": "n" },
             { "lang_key":"stream",          "id": "va_stream",          "href": "stream.html" , "flag": "y"},
             { "lang_key":"privacymask",     "id": "va_privacymask",     "href": "privacymask.html" , "flag": "y"},
-            { "lang_key":"videoout",        "id": "va_videoout",        "href": "videoout.html", "flag": "y" }
+            { "lang_key":"videoout",        "id": "va_videoout",        "href": "videoout.html", "flag": "n" }
         ],
         "eventConf":[
             { "lang_key":"eventrules",              "id": "eventrules",             "href": "eventrules.html", "flag": "y" },

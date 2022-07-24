@@ -5,20 +5,7 @@
 include ("../inc/common.php");
 echo $header;
 
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from user_tbl";
-$rs = $db->query($sq);
 
-$level = array("Administrator", "Operator","Viewer");
-
-$tag_userlist = '';
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$user_info =  $row['id'].FillText($level[$row['level']], 30, "right");
-	$tag_userlist .= '<option value="'.$row['prino'].'">'.$user_info.'</option>';
-}
-$db->close();
 
 ?>
 
@@ -26,20 +13,20 @@ $db->close();
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup > Maintenance ></span><strong >Users</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong ><span>users</span></strong></p>
 				<div class="container-fluid">
 					<div class="row col-lg-6">
 						<div class="card col-md-12">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary">User List</h6>
+								<h6 class="m-0 font-weight-bold text-primary"><span>User List<span></h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
 									<select id="formUserList" class="form-control" size="10"><?=$tag_userlist?></select>
 								</div>
 								<div class="form-group mb-0">
-									<button id="btnAdd" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>Add...</span></button>
-									<button id="btnModify" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>Modify...</span></button>
+									<button id="btnAdd" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>Add</span>...</button>
+									<button id="btnModify" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>Modify</span>...</button>
 									<button id="btnRemove" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userDelModal"><span>Remove</span></button>
 								</div>
 							</div>

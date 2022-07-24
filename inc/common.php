@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT']."/inc/json.php";
+// require_once $_SERVER['DOCUMENT_ROOT']."/inc/json.php";
 if (strpos(" ".$_SERVER['REQUEST_URI'], "/config/") >0 ){
     $header = <<<EOBLOCK
     <head>
@@ -18,11 +18,10 @@ EOBLOCK;
     $footer = <<<EOBLOCK
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <!--script src="/js/bootstrap.bundle.js"></script-->
     <script src="/js/bootstrap.js"></script>
-
+    <script src="/js/language.js"></script>
 EOBLOCK;
-
+// <!--script src="/js/bootstrap.bundle.js"></script-->
 }
 else {   
     $header = '<head>
