@@ -32,6 +32,10 @@
     {   "key": "interval",              "English": "Interval",              "Korean" : "간격",          "Chinese": "间隔" },
     {   "key": "tcpServer",            "English": "TCP Server",            "Korean" : "TCP 서버",      "Chinese": "TCP 服务器" },
     {   "key": "tcpnotification",      "English": "TCP Notification",      "Korean" : "TCP 알람",      "Chinese": "TCP 推送" },
-    {   "key": "multicast",             "English": "Multicast",             "Korean" : "멀티캐스트",     "Chinese": "多播" }
+    {   "key": "multicast",             "English": "Multicast",             "Korean" : "멀티캐스트",     "Chinese": "多播" },
+
+    {   "key": "userlist",             "English": "User List",             "Korean" : "사용자목록",     "Chinese": "用户目录" }
+    
+
 
 ]

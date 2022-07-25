@@ -5,19 +5,6 @@
 include ("../inc/common.php");
 echo $header;
 
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='network'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
-
 $arr_tz = [
 	["GMT12", "(UTC-12:00) International Date Line West", "GMT12"],
 	["GMT11", "(UTC-11:00) Coordinated Universal Time-11", "GMT11"],
@@ -139,7 +126,7 @@ foreach($arr_tz as $tz){
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup > Maintenance ></span><strong >Date &amp; Time</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong><span>datentime</span></strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">

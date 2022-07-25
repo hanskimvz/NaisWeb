@@ -5,19 +5,6 @@
 include ("../inc/common.php");
 echo $header;
 
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='encoder'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
-
 ?>
 <body>
     <div id="wrapper">
@@ -131,7 +118,7 @@ $db->close();
 <!--tab stream 1-->							
 <div class="card mt-2">
 	<div class="card-header">
-		<h6 class="mb-0 font-weight-bold text-primary">Stream 1</h6>
+		<h6 class="mb-0 font-weight-bold text-primary">Stream 2</h6>
 	</div>
 	<div class="card-body">
 		<label class="form-check">

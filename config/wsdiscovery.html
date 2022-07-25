@@ -5,33 +5,22 @@
 include ("../inc/common.php");
 echo $header;
 
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='network' and group2='mdns'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
 ?>
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup > Network Configuration ></span><strong> WS-Discovery</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <span class="font-weight-bold">wsdiscovery</span></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
 							</div>
 							<div class="card-body">
 								<lable class="form-check">
 									<input type="checkbox" id="wsDiscoveryEnable" class="form-check-input" />
-									<span>Enable</span>
+									<span>enable</span>
 								</label>
 							</div>
 
@@ -39,7 +28,7 @@ $db->close();
 						
 					</div>
 					<div class="row col-lg-6 mt-2 mb-2">
-						<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+						<button id="btnApply" class="btn btn-sm btn-primary">apply</button>
 					</div>
 				</div>
 			</div>
@@ -48,4 +37,19 @@ $db->close();
 	<div id="debug_console"></div>
 </body>
 <?=$footer?>
+<script>
+	function loadWSDConfig(){
+	// url = "/inc/query.php?page=wsdiscovery";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Wsdiscovery.enable";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['NETWORK.Wsdiscovery.enable']=='yes'){
+			$("#wsDiscoveryEnable").prop('checked', true);
+		}
+	});
+}
+
+loadWSDConfig();
+
+</script>
 </html>

@@ -5,42 +5,31 @@
 include ("../inc/common.php");
 echo $header;
 
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='network'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
 ?>
+
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup > Network Configuration ></span><strong> IP Filtering</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <span class="font-weight-bold">ipfiltering</span></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
 									<label class="form-check">
 										<input type="checkbox" id="IPFilteringEnable" class="form-check-input" />
-										<span>Enable</span>
+										<span>enable</span>
 									</label>
 									<label class="form-check">
 										<input type="checkbox" id="AlwaysAllowPing" class="form-check-input" />
-										<span>Always allow ping request</span>
+										<span>alwaysallowpingrequest</span>
 									</label>
 									<div class="form-inline">
-										<span class="col-md-3">Allow admin IP :</span>
+										<span class="col-md-3">allowadminip</span>
 										<input type="text" id="formAllowadminIP" class="form-control-custom" size="20"/>
 									</div>
 								</div>
@@ -50,29 +39,29 @@ $db->close();
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Policy</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>policy</span></h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group form-inline">
 									<label class="form-check">
 										<input type="radio" name="formIPFilterAllowDeny" id="formIPFilterAllowDeny0" class="form-check-input" />
-										<span>Allow</span>
+										<span>allow</span>
 									</label>
 									<label class="form-check ml-2">
 										<input type="radio"name="formIPFilterAllowDeny" id="formIPFilterAllowDeny1" class="form-check-input" />
-										<span>Deny</span>
+										<span>eeny</span>
 									</label>
 								</div>
 								<div class="form-group">
-									<span class="col-md-3">Filtered IP Addresses</span>
+									<span class="col-md-3">filteredipaddr</span>
 									<select size="10" id="formIPAddressList" class="col-md-12 form-control-custom"><option></option></select>
 								</div>
-								<button id="btnAddIP" class="btn btn-mini btn-warning" data-toggle="modal" data-target="#filtered_ip">Add...</button>
-								<button id="btnRemoveIP" class="btn btn-mini btn-secondary">Remove</button>
+								<button id="btnAddIP" class="btn btn-mini btn-warning" data-toggle="modal" data-target="#filtered_ip"><span>add</span>...</button>
+								<button id="btnRemoveIP" class="btn btn-mini btn-secondary"><span>remove</span></button>
 							</div>
 						</div>
 					</div>
-					<button id="btnApply" class="btn btn-sm btn-primary mt-2">Apply</button>
+					<button id="btnApply" class="btn btn-sm btn-primary mt-2"><span>apply</span></button>
 				</div>
 			</div>
 		</div>
@@ -84,7 +73,7 @@ $db->close();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Filtered IP Address Setup</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><span>filteredipaddrsetup</span></h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">x</span>
                     </button>
@@ -94,11 +83,11 @@ $db->close();
 						<span class="col-md-5">IP Address :</span>
 						<input type="text" id="formIPAddr" class="form-control form-control-sm" />
 					</div>
-					<p class="ml-5">IP format :<br />xxx.xxx.xxx.xxx<br />xxx.xxx.xxx.xxx/xx<br />xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx<br /></p>
+					<p class="ml-5"><span>ipformat</span> :<br />xxx.xxx.xxx.xxx<br />xxx.xxx.xxx.xxx/xx<br />xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx<br /></p>
 				</div>
                 <div class="modal-footer">
-                    <button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
-					<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal"><span>apply</span></button>
+					<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal"><span>cancel</span></button>
                 </div>
             </div>
         </div>
@@ -106,4 +95,27 @@ $db->close();
 	<div id="debug_console"></div>
 </body>
 <?=$footer?>
+<script>
+function loadIPFConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=IPFILTER";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['NETWORK.Http.enable']=='yes'){
+			$("#formHTTPSet1").prop('checked', true);
+		}
+		else if (response['NETWORK.Https.enable']=='yes'){
+			$("#formHTTPSet0").prop('checked', true);
+			$("#https_contents").removeAttr('hidden');
+		}
+
+		$("#formHttpPort").val(response['NETWORK.Http.port']);
+		$("#formHttpsPort").val(response['NETWORK.Https.port']);
+		$("#formHTTPAuthType").val(response['NETWORK.Http.authentype']);
+		// $("#system_datetime_ntp_s3").val(response['SYSTEM.Datetime.Ntp.s3']);
+	});
+}
+
+loadIPFConfig();
+
+</script>
 </html>

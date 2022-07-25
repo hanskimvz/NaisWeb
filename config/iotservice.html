@@ -5,18 +5,6 @@
 include ("../inc/common.php");
 echo $header;
 
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='network'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
 $arr_tz = [
 	["GMT12", "(UTC-12:00) International Date Line West", "GMT12"],
 	["GMT11", "(UTC-11:00) Coordinated Universal Time-11", "GMT11"],
@@ -137,16 +125,16 @@ foreach($arr_tz as $tz){
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup > Network Configuration ></span><strong> Retail Cloud Service</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <span class="font-weight-bold">iotservice</span></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Time zone</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>timezone</span></h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group form-inline mb-0">
-									<span class="col-md-2">Time zone : </span>
+									<span class="col-md-2">timezone</span>
 									<select id="iotServiceTzList" class="form-control-custom"><?=$sel_tz?></select>
 
 								</div>
@@ -156,44 +144,44 @@ foreach($arr_tz as $tz){
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
 							</div>
 							<div class="card-body">
 								<label class="form-check">
 									<input type="checkbox" id="formIoTEnable" class="form-check-input" />
-									<span>Enable</span>
+									<span>enable</span>
 								</label>								
 								<div class="form-group">
 									<div class="form-inline">
-										<span class="col-md-3">Server Name :</span>
+										<span class="col-md-3">serveraddr</span>
 										<input type="text" id="formURL" class="form-control-custom" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">Server port : </span>
+										<span class="col-md-3">serverport</span>
 										<input type="text" id="formPort" class="form-control-custom mr-2" />
 										<label>(1 ... 65535)</label>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">Connection status :</span>
-										<label id="st_connecting" class="04041527">Connecting...</label>
-										<label id="st_failure" class="04041528">Failure</label>
-										<label id="st_success" class="04041529">Success</label>
-										<label id="st_none"></label>
+										<span class="col-md-3">connectionstatus</span>
+										<label id="st_connecting" hidden>Connecting...</label>
+										<label id="st_failure" hidden>Failure</label>
+										<label id="st_success" hidden>Success</label>
+										<label id="st_none" hidden></label>
 									</div>
 								</div>
 								<div class="form-group mb-0">
-									<h6>Note :</h6>
+									<h6><span>note</span></h6>
 									<p class="text-sm">
 										When Retail Cloud Service is enabled,<br />
 										&middot;&nbsp;The time &amp; date of this camera will be automatically synchronized from a NTP server in <a href="#">"NTP > NTP Server Lists".</a><br/>
 										&middot;&nbsp;If <a href="#">"NTP > NTP Server Lists"</a> is empty, the default values will be recovered.<br/>
-										&middot;&nbsp;If <a href="#" class="linkTcpIp link_blue 04041521">"TCP/IP > Primary DNS server"</a> is empty, the default values will be recovered.</span>
+										&middot;&nbsp;If <a href="#">"TCP/IP > Primary DNS server"</a> is empty, the default values will be recovered.</span>
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<button id="btnApply" class="btn btn-sm btn-primary mt-2">Apply</button>
+					<button id="btnApply" class="btn btn-sm btn-primary mt-2"><span>apply</span></button>
 				</div>
 			</div>
 		</div>
@@ -201,4 +189,22 @@ foreach($arr_tz as $tz){
 	<div id="debug_console"></div>
 </body>
 <?=$footer?>
+<script>
+function loadIOTConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=IOT";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['IOT.enable']=='yes'){
+			$("#formIoTEnable").prop('checked', true);
+		}
+
+		$("#formURL").val(response['IOT.address']);
+		$("#formPort").val(response['IOT.port']);
+		$("#network_ieee8021x_pwd").val(response['IOT.status']);
+		// $("#system_datetime_ntp_s3").val(response['SYSTEM.Datetime.Ntp.s3']);
+	});
+}
+loadIOTConfig();
+
+</script>
 </html>
