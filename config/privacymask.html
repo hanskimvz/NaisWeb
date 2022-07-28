@@ -6,46 +6,71 @@ include ("../inc/common.php");
 echo $header;
 ?>
 
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Video & Audio</span> > <strong>Privacy mask</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary"><span>view</span></h6>
+							</div>
+							<div class="card-body"> 
+								<div id="viewToggle" class="row mt-2 justify-content-center">
+									<canvas id="canvas"></canvas>
+									<script>
+										var canvas = document.getElementById("canvas");
+										canvas.width=720;
+										canvas.height = 360;
+										var ctx = canvas.getContext('2d');
+										var img =  new Image();
+										img.src="../images/demo_screen.jpg";
+										ctx.drawImage(img, 0,0,720,360);
 
-<body id="config-page">
-	<p class="menuLocationInfo">
-		<span id="parentpagename" class="04020701">Setup &gt; Video &amp; Audio &gt;</span>
-		<span id="parentpagename_video" class="04020710" style="display:none;">Setup &gt; Video &gt;</span>
-		<span id="pagename" class="04020702">Privacy Mask</span>
-	</p>
-	<ul class="box">
-		<li class="box-title"><h2 class="04020703">View</h2></li>
-	</ul>
-	<div id="viewToggle" class="box" align="center">
-		<li id="screen"></li>
-		<li>
-			<span class="noIEMsg 04020709">* Privacy mask configuration is only supported in Internet Explorer.</span>
-		</li>
-	</div>
-	<ul class="box noIEContents">
-		<li class="box-title"><h2 class="04020704">Privacy Mask Zones</h2></li>
-		<li>
-			<ul id="infoTable">
-				<li class="item nocolor">
-					<div align="center">
-						<table id="users">
-							<thead>
-								<tr>
-									<th class="04020705">Show</th>
-									<th class="04020706">Zone ID</th>
-									<th class="04020707">Name</th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>
+									</script>
+									<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
+								</div>	
+								<br /><span>* Privacy mask configuration is only supported in Internet Explorer.</span>
+							</div>
+						</div>
 					</div>
-				</li>
-			</ul>
-		</li>
-	</ul>
-	<div id="btn" class="box noIEContents" align="right">
-		<button id="save"><span class="04020708">SAVE</span></button>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary"><span>Privacy mask zones</span></h6>
+							</div>
+							<div class="card-body"> 
+								<table id="users" class="table table-sm">
+									<thead>
+										<tr>
+											<th><span>Show<span></th>
+											<th><span>Zone id</span></th>
+											<th><span>Name</span></th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+							<div class="card-footer text-center">
+								<button id="save" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="debug_console"></div>
 </body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
 </html>

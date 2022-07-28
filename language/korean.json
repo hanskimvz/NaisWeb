@@ -1,0 +1,868 @@
+{
+    // Main
+    "Live":                 "실시간",
+    "Setting":              "설정",
+
+    // config Main menu
+    "Set up":               "설정", 
+    "Basic":                "기본",
+    "Video&Audio":          "영상 & 음성",
+    "Event Configuration":  "이벤트 설정",
+    "Network Configuration":"네트워크 설정",
+    "Storage":              "저장장치",
+    "VCA Configuration":    "영상분석 설정",
+    "Peripherial":          "주변장치",
+    "PTZ Configuration":    "PTZ 설정",
+    "Maintenance":          "유지보수",
+    "Activation":           "영상분석 활성화",
+    "About":                "정보",
+    "OEM":                  "OEM",
+
+    // submenu
+    "Users":                "사용자",
+    "TCP/IP":               "TCP/IP",
+    "Datetime":             "날짜 시간",
+    "Stream":               "스트림",
+    "Focus Assist":         "초점조절도구",
+
+    "Camera":               "카메라",
+    "Zoom&Focus":           "줌/초점",
+    "Burnt in Text":        "화면 OSD",
+    "Encoder Profile":      "인코더 구성",
+    "Privacy Mask":         "사생활 보호",
+    "Video Out":            "영상 출력",
+
+    "Event Rules":          "이벤트규칙",
+    "Advanced Rules":       "고급규칙",
+    "Motion Detection":     "움직임감지",
+    "Face detection":       "얼굴인식",
+    "Network Loss":         "네트워크 단선",
+    "Heartbeat":            "하트비트",
+    "Event Schedule":       "스케쥴",
+    "EMail Recipient":     "이메일 수신자",
+    "FTP Notification":     "FTP 통지",
+    "HTTP Notification":    "HTTP 통지",
+    "TCP Notification":     "TCP 통지",
+    "TCP Server":           "TCP 이벤트 서버",
+    
+    "HTTP":                 "HTTP",
+    "NTP":                  "NTP",
+    "UPnP":                 "UPnP",
+    "RTP/RTSP":             "RTP/RTSP",
+    "RTMP":                 "RTMP",
+    "mDNS":                 "mDNS",
+    "WS-Discovery":         "WS-Discovery",
+    "SMTP":                 "SMTP(E-mail)",
+    "DDNS":                 "DDNS",
+    "SNMP":                 "SNMP",
+    "Wireless LAN":         "무선인터넷",
+    "IP Filtering":         "IP 필터링",
+    "Hosted Service":       "호스트 서비스",
+    "Retail Cloud Service": "Retail Cloud 서비스",
+    "IEEE 802.1x":          "IEEE 802.1x",
+
+    "SD Storage":           "SD 저장장치",
+    "FTP Storage":          "FTP 저장장치",
+    "Recording":            "영상 녹화",
+    "File Download":        "영상 내려받기",
+
+    "VCA license":              "사용 설정",
+    "Zones & Rules":            "영역 & 규칙",
+    "Calibration":              "입체 보정",
+    "Classification":           "물체 분류",
+    "Tamper":                   "임의조작 감지",
+    "Schene Change":            "화면 변경",
+    "PTZ Tracking":             "PTZ 추적기능",
+    "Burnt in Annotation":      "확장 OSD",
+    "Counting Report":          "카운팅 리포트",
+    "Heatmap Report":           "히트맵 리포트",
+    "Advanced":                 "고급 설정",
+    "VCA Conf. Import Export":  "설정 백업 복구",
+
+    "DI/DO":                "감지기 / 경보기",
+    "Uart":                 "시리얼 통신",
+    "Heater":               "히터",
+
+    "PTZ":                  "PTZ",
+    "Touring":              "투어링",
+    "Auto run":             "자동 순찰",
+    "Protocol":             "통신 규약",
+    "Preset Schedule":      "프리셋 일정",
+
+    "API":                  "API",
+    "Language":             "언어",
+    "Firmware Upgrade":     "펌웨어 업그레이드",
+    "System Log":           "시스템 로그",
+    "Conf. Import Export":  "설정 백업/복구",
+    "Reset All Settings":   "시스템 초기화",
+    "Reboot":               "장치 다시 시작",
+    "Third Manager":        "플러그인 관리",
+
+    "Information":          "정보",
+    "License":              "라이선스",
+
+
+    // Buttons
+    "Add":              "추가",
+    "Modify":           "수정",
+    "Remove":           "삭제",
+    "Apply":            "적용",
+    "Cancel":           "취소",
+    "Test":             "테스트",
+    "Renew":            "갱신",
+    "Start":            "시작",
+    "Stop":             "정지",
+    "View":             "보기",
+    "Copy":             "복사",
+    "Submit":           "전송",
+
+
+    // users
+    "User List":            "사용자 목록",
+    "User Authentication":  "사용자 인증",
+    "Enable anonymous viewer login (no user name or password required)": "익명의 사용자에게 보기 권한 부여(사용자 이름과 비밀번호 요구 안함)",
+    "User name":            "사용자 이름",
+    "Password":             "비빌번호",
+    "Confirm Password":     "비밀번호 확인",
+    "User Information":     "사용자 정보",
+    "User Group":           "사용자 그룹",
+    "Viewer":               "관람자",
+    "operator":             "운영자",
+    "Administrator":        "관리자",
+
+    // TCP/IP
+    "IP Address Configuration":         "IP 주소",
+    "Enable IPv4":                      "IPv4 사용",
+    "Obtain an IP address via DHCP":    "자동으로 IP 주소 받기",
+    "IP address":                       "IP 주소",
+    "Subnet mask":                      "서브넷 마스크" ,
+    "Gateway address":                  "게이트웨이",
+    "Use the following IP address":     "다음 IP 주소 사용",
+    "Enable IPv6":                      "IPv6 사용",
+    "IP address(Information)":          "IP주소(정보)",
+    "Enable accept router advertisements":"라우터 통지 사용",
+    "Enable DHCP":                      "DHCP 사용",
+    "DHCP type":                        "DHCP 유형",
+    "Prefix length":                    "프리픽스 길이",
+    "Default router":                   "기본 라우터",
+    "DNS Configuration":                "DNS 설정",
+    "Primary DNS server":               "기본 DNS 서버",
+    "Secondary DNS server":             "보조 DNS 서버",
+    "Host Configuration":               "호스트 설정",
+    "Host name":                        "호스트 이름",
+    "Link-Local Address":               "링크 로컬 주소" ,
+    "Enable Auto-Configuration link-local address": "링크 로컬 주소 자동설정 실행",
+
+    // Date & Time
+    "Date & Time":              "날짜 & 시간" ,
+    "Current Camera Time":      "장비 현재 시간",
+    "Configuration":            "설정",
+    "Time zone":                "표준 시간대",
+    "Sync source":              "시간 동기",
+    "Date & Time format":       "날짜&시간 표시",
+    "Predefined":               "형식",
+    "24-hour":                  "24시간 표기",
+    "New Camera Time":          "새로운 시간 설정",
+    "Source":                   "소스 선택",
+    "Set this computer's Date & Time": "이 컴퓨터의 시간으로 설정",
+    "Set with NTP server":      "NTP 시간으로 설정",
+    "NTP server":               "인터세 시간 서버",
+    "Set manually":             "수동 설정",
+    "Date":                     "날짜",
+    "Time":                     "시간",
+    
+    // Stream
+    "First Stream":         "스트림 1",
+    "Second Stream":        "스트림 2",
+    "Enable streaming":     "스트림 사용" ,
+    "Video codec":          "비디오 코텍",
+    "Resolution":           "해상도",
+    "Max. FPS":             "최대 프레임수",
+    "GOP":                  "GOP",
+    "Profile identification":"AVC 프로파일",
+    "Bitrate control":      "비트레이트",
+    "Multiple slices":      "멀티 슬라이스",
+    "Variable bitrate(VBR)":"가변 비트레이트(VBR)",
+    "Maximum bitrate":      "최대 비트레이트",
+    "Image Quality":        "영상화질",
+    "Constant bitrate(CBR)":"고정 비트레이트(CBR)",
+    "Target bitrate":       "비트레이트 지정",
+    "Snapshot":             "스냅샷",
+    "Enable snapshot":      "스냅샷 사용",
+    "JPEG Quality":         "JPEG 화질",
+    "Best quality is 100":  "가장 좋은 화질은 100입니다",
+    "Audio":                "오디오",
+    "Audio Input":          "오디오 입력",
+    "Audio Output":         "오디오 출력",
+    "MIC":                  "마이크",
+    "Line-in":              "라인 인",
+    "Volume":               "음량",
+    "Codec":                "코덱",
+    "Sampling frequency":   "샘플링 주파수",
+    "TCP listen port":      "TCP/IP 포트",
+
+    // Focus assistant
+
+    // Camera
+    "Video":                "영상",
+    "Expert":               "전문가설정",
+    "General":              "일반",
+    "Friendly name":        "별명",
+    "Aspect ratio":         "종횡비",
+    "Video Standard Format":"Video Standard Format",
+    "Video Appearance":     "비디오 화면 조정",
+    "Brightness":           "밝기",
+    "Contrast":             "대비",
+    "Saturation":           "채도",
+    "Sharpness":            "선명도",
+    "Exposure":             "노출",
+    "Exposure mode":        "노출모드",
+    "Auto":                 "자동",
+    "Maximum exposure time":"최대 노출 시간",
+    "Minimum exposure time":"최소 노출 시간",
+    "Manual":               "수동",
+    "Shutter speed":        "셔터 속도",
+    "Flickerless":          "플리커리스",
+    "Maximum AGC":          "최대 AGC",
+    "Exposure adjustment":  "노출 조정",
+    "Back light compensation":"역광보정",
+    "center":               "가운데",
+    "left":                 "왼쪽",
+    "right":                "오른쪽",
+    "top":                  "위쪽",
+    "bottom":               "아래쪽",
+    "Digital slow shutter": "디지털 저속 셔터",
+    "On":                   "켜기",
+    "Off":                  "끄기",
+    "Digital Wide Dynamic Range":"디지털 WDR",
+    "Enable":               "사용",
+    "Level":                "레벨",
+    "Day & Night":          "주간 & 야간",
+    "Day & Night mode":     "주간 야간 동작 모드",
+    "Day to Night Level":   "야간 전환 시점",
+    "Night to Day Level":   "주간 전환 시점",
+    "Refocus":              "Refocus",
+    "Sync with Day & Night":"주야간에 동기화",
+
+    "Image Signal Processing":"이미지 선호 처리",
+    "Dynamic 2D DNR":       "동적 2D DNR",
+    "Noise Filter":         "노이즈 필터",
+    "Enable defog":         "안개 보정 사용",
+    "low":                  "낮음",
+    "medium":               "중간",
+    "high":                 "높음",
+    "White balance":        "화이트 밸런스",
+    "White balance mode":   "화이트 밸런스 모드",
+    "push":                 "push",
+    "Red":                  "적색",
+    "Blue":                 "청색",
+    "Video Transform":      "영상 변환",
+    "Orientation":          "영상 대칭 이동",
+    "Vertical flip":        "수직 대칭",
+    "Horizontal mirror":    "수평 대칭",
+    "Rotation":             "영상 대칭 회전",
+    "None":                 "사용 안함",
+    "Left(-90 degrees)":    "왼쪽으로 90도",
+    "Right(+90 degrees)":   "오른쪽으로 90도",
+    "Note: Image rotation is disabled while any of the features below is activated.":
+        "알림: 비디오 회전은 아래 기능과 동시 사용할 수 없습니다",
+    "Auto Focus mode":      "자동 초점 모드",
+    "semi-auto":            "반자동",
+    "Gain control":         "게인 제어",
+    "Gain":                 "게인",
+    "Noise reduction":      "노이즈 제거",
+    "Thermal metadata":     "온도 metadata",
+    "Window adjust":        "화면 위치 제어",
+    "Vertical delay":       "수직 지연",
+    "Horizontal delay":     "수평 지연",
+    "High performance imagep rocessing":"고성능 이미지 처리",
+    "Enable de-interlacing": "인터레이싱 제거",
+
+    //  Zoom & Focus
+    "Movement":         "조작",
+    "(zoom)":           "(줌)",
+    "(focus)":          "(포커스)",
+    "Calibration":      "보정",
+    "Calibrate":        "보정시작",
+ 
+    // Burnt in Text
+    "Enable B-I Text":  "화면 OSD 사용",
+    "Display items":    "표시 요소",
+    "Text format":      "문자열 형식",
+    "Max 48 characters":"최대 48자",
+    "Enable milliseconds for time display": "천분의 1초 표시하기",
+    "Text Position":    "문자열 위치",
+    "Date position":    "날짜 위치",
+    "Time position":    "시간 위치",
+    "Name position":    "이름 위치",
+    "Percentage X,Y":   "XY 좌표",
+    "Top-Left":         "왼쪽 위에",
+    "Bottom-Left":      "왼쪽 아래에",
+    "Top-Right":        "오른쪽 위에",
+    "Bottom-Right":     "오른쪽 아래에",
+
+    // Privacy mask 
+    "Privacy Mask Zones": "사생활 보호 구역",
+    "Show":             "보이기",
+    "Zone id":          "구역 ID",
+    "Name":             "이름",
+
+    // Video Out
+    "Mode":             "모드",
+    "Video Output":     "영상 출력",
+    "BNC Output":       "BNC 출력",
+
+    // Event Rules
+    "Enable event rules":"이벤트 규칙 사용하기",
+    "Event Rule List":  "이벤트 규칙 목록",
+    "Use":              "사용",
+    "Description":      "설명",
+    "Enable profile":   "규칙 사용",
+    "Event source":     "이벤트 소스",
+    "Event action":     "이벤트 액션",
+    "Event Profile Info":"이벤트규칙",
+    "Enable rule":      "규칙 사용",
+    "Triggered by":     "이벤트 소스",
+    "When Triggered":   "이벤트 액션",
+    "Detectors":        "감지기",
+    "Sensor(DI #1)":    "센서 #1",
+    "Alarm(DO #1)":     "경보기 #1",
+    "VCA source":       "영상분석",
+    "Network loss/detect":"네트웍 단선/연결",
+    "Day & Night Transition": "주야 전환",
+    "System":           "시스템",
+    "Network setting changed":  "네트웍 설정 변경",
+    "Recurrence":       "반복 설정",
+    "Schedule":         "스케쥴",
+    "Active alarm(DO #1)":"경보기 출력 #1",
+    "Save event log":   "이벤트 로그 저장",
+    "Send e-mail notification":"이메일 통지",
+    "Upload notification to FTP":"FTP 통지",
+    "Send HTTP notification":"HTTP 통지",
+    "Send TCP notification":"TCP 통지",
+    "Send notification via TCP event server":"TCP 이벤트 서버를 통해 통지",
+    "Send multicast notification":"멀티캐스트 통지",
+
+    // Motion detection
+    "Motion Zones":     "움직임 감지 영역",
+    "Sensitivity":      "민감도",
+    "Object Size":      "물체 크기",
+
+    // Face detection
+    "Confidence":       "신뢰도",
+    "Zone":             "영역",
+    "OSD":              "OSD",
+    "Zone OSD enable":  "영역 OSD 사용",
+
+    // Network Loss
+    "Check ethernet connectivity":"네트워크 케이블 단선 체크",
+    "Check ping response":  "Ping 응답 체크",
+    "Interval":         "간격",
+    "Host address":     "호스트 IP 주소",
+    "sec(s)":             "초",
+
+    // Heartbeat
+    "Multicast":        "멀티캐스트",
+    
+    //  Schedule
+    "Schedules List":   "스케쥴 목록",
+    "ID":               "ID",
+    "Schedule information": "스케줄 정보",
+    "Start date":       "시작 날짜",
+    "End date":         "종료날짜",
+    "Week day":         "요일",
+    "End":              "종료",
+    "Month":            "월",
+    "Day":              "일",
+    "Year":             "연",
+    "Hour":             "시",
+    "Min":              "분",
+    "mon":              "월",
+    "tue":              "화",
+    "wed":              "수",
+    "thu":              "목",
+    "fri":              "금",
+    "sat":              "토",
+    "sun":              "일",
+    
+    //  Email recipient 
+    "Send rate limit":  "이메일 전송 제한",
+    "Contents":         "내용",
+    "HTML encoded":     "HTML",
+    "Plain text":       "일반 텍스트",
+    "EMail Recipient List": "이메일 수신자 목록",
+    "E-Mail address":   "이메일 주소",
+    "E-Mail Recipient info": "이메일 수신자 정보",
+    
+    //  FTP Notification
+    "FTP Notification List":"FTP 통지 목록",
+    "FTP Notification Info":"FTP 통지 정보",
+    "Target directory":     "홈 디렉토리",
+    "Filename format":      "파일 이름 형식",
+    "Filename prefix":      "파일 이름 프리픽스",
+    "Account":              "사용자 계정",
+    "Port":                 "포트",
+
+    // HTTP Notification
+    "HTTP Notification List":   "HTTP 통지 목록",
+    "Message":                  "메시지",
+    "Enable Option":            "옵션 선택",
+    "HTTP Notification Info":   "HTTP 통지 정보",
+    "Append detailed information":"메시지에 이벤트 세부정보 추가",
+    "Login Credentials (if required)": "인증 정보(필요한 경우)",
+
+    // TCP Notification
+    "Connect imeout":       "접속 제한 시간",
+    "Send timeout":         "전송 제한 시간",
+    "Alive type":           "접속 유지 방식",
+    "Alive time":           "접속 유지 시간",
+    "Once":                 "즉시해제",
+    "Unlimited":            "제한 없슴",
+    "Timeout":              "시간 제한",
+    "Message Customization":"사용자 지정 TCP 메시지",
+
+    // TCP message modification, TCP message info.
+    "TCP Message Info": "TCP 메시지 정보",
+    "Message header":   "메시지 헤더",
+    "VCA":              "영상분석",
+    "Network":          "네트워크",
+    "Customized Message Header":"사용자 지정 메시지 헤더",
+    "Enable Using Customized Message Header":"사용자 지정 메시지 헤더 사용",
+    "The message header will be sent out first before the message if using customized message header. And it will be effective for all event messages.":
+        "이것은 모든 이벤트 메시지에 적용됩니다. 사용자 지정 메시지 헤더가 전송되고 난 후에 실제 이벤트 메시지가 전송됩니다.",
+    "VCA Events":       "영상분석 이벤트",
+    "VCA config":       "VCA 설정",
+    "Default message":  "기본 메시지",
+    "Customized message":"사용자 지정 메시지",
+    "VCA alarm":        "VCA 이벤트 발생",
+    "VCA counter":      "VCA 카운터 발생",
+    "MD Events":        "움직임 이벤트",
+    "MD detected alarm":"움직임 이벤트 발생",
+    "Network Events":   "네트워크 이벤트",
+    "DI/DO Events":     "DI/DO 이벤트",
+    "Video loss Events": "영상 소실 이벤트",
+
+    // TCP Server
+
+    // Mulitcast Notification
+    "Multicast Notification": "멀티캐스트 통지",
+
+
+
+    "tcpnotificationlist": "TCP Notification list",
+    "tcpnotificationinfo":"TCP Notification Info",
+    
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+ 
+
+
+ 
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    "webserver":        "Web Server",
+    "https":            "HTTPS",
+    "tcpporthttp":      "TCP/IP port number of HTTP",
+    "tcpporthttps":      "TCP/IP port number of HTTPS",
+    "authenticationtype":"Authentication Type",
+
+
+    
+    "ntp_sntp":         "NTP(SNTP)",
+    "ntpserverlist":    "NTP Server list",
+    "ntpserver1":       "NTP Server 1",
+    "ntpserver2":       "NTP Server 2",
+    "ntpserver3":       "NTP Server 3",
+    "ntpserver4":       "NTP Server 4",
+
+    
+
+    
+    "common":           "Common",
+    
+    
+    "rtspconf":         "RTSP configuration",
+  
+    "enablertspauth":   "Enable RTSP Authentication",
+    "srtp":             "SRTP",
+    "protectprofile":   "Protection profile",
+    "masterkey":        "Master key",
+    "saltkey":          "Salt key",
+    "keygeneration":    "Key Generation",
+    "unicast":          "Unicast",
+    "enablestream":     "Enable Stream",
+    "session":          "Session",
+    
+    "enableaudiostream":"Enable audio stream",
+    "enablemetadata":   "Enable metadata",
+    "enableonvifmeta":  "Enable ONVIF metadata",
+    "enableqosdscp":    "Enable QoS DSCP",
+    "videodscp":        "Video DSCP",
+    "audiodscp":        "Audio DSCP",
+    "metadscp":         "Meta DSCP",
+    "onvifmetadscp":    "ONVIF Meta DSCP",
+    "enablealwaysmulticast": "Enable always multicast",
+    "videoipaddr":      "Video IP address",
+    "videoport":        "Video port",
+    "audioipaddr":      "Audio IP address",
+    "audioport":        "Audio port",
+    "metaipaddr":       "Meta IP address",
+    "metaport":         "Meta port",
+    "onvifmetaipaddr":  "ONVIF Meta IP address",
+    "onvifmetaport":    "ONVIF Meta port",
+    "ttl":              "TTL",
+    "desc_multi_autoconf":  "(Enter 0.0.0.0 for automatic configuration)",
+
+    
+    "chunksize":        "Chunk size",
+    "instance":         "Instance",
+    "url":              "URL",
+    "stream_0":         "First stream",
+    "stream_1":         "Second stream",
+    "enablepublish":    "Enable publish",
+    "type":             "Type",
+    "record":           "Record",
+    "append":           "Append",
+    "bufferlength":     "Buffer length",
+
+    
+
+    
+
+    
+    "smtp_email":       "SMTP (E-Mail)",
+    "emailsender":      "Email Sender",
+    "sendersname":      "Sender's name",
+    "fromemailaddr":    "From email address",
+    "mailserveraddr":   "Mail server address",
+    "mailserverport":   "Mail server port",
+    "enablessl":        "Enable encrypted connection (SSL)",
+    "useloginthisserver":"Use authentication to log in this server",
+    "sendmailto":       "Send test mail to",
+
+    
+    "enableddns":       "Enable DDNS",
+    "ddnsserviceprovider":  "DDNS Service Provider",
+    "serviceprovider":  "Service Provider",
+    "ddnssetting":      "DDNS Setting",
+    "domainname":       "Domain name",
+    "updatetime":       "Update time",
+    "ddns_desc1":       "Format: domain_name,hash_code",
+
+    
+    "snmpversion":      "SNMP Version",
+    "snmpdescription":  "SNMP Description",
+    "location":         "Location",
+    "contact":          "Contact",
+    "vacmsetting":      "VACM Setting",
+    "readcommunity":    "Read Community",
+    "user":             "User",
+    "auth":             "Auth",
+    "priv":             "Priv",
+    "authenticationprotocol": "Authentication Protocol",
+    "privprotocol":     "Privilege Protocol",
+    "trapsetting":      "Trap Setting",
+    "trapver1.0":       "Trap Ver1.0",
+    "address":          "Address",
+    "community":        "Community",
+    "trapver2.0":       "Trap Ver2.0",
+
+    
+    "wirelessaplist":   "Wireless AP List",
+    "choosewirelessnetwork":"Choose a wireless network",
+    "essid":            "ESSID",
+
+    "macaddr":          "Mac address",
+    
+    "encryption":       "Encryption",
+    "authentication":   "Authentication",
+    "networkkey":       "Network key",
+    "refreshnetworklist":"Refresh Network List",
+    "wirelessnetworkipconf": "Wireless network IP configuration",
+
+
+    
+    "alwaysallowpingrequest": "Always allow ping request",
+    "allowadminip": "Allow admin IP",
+    "policy":           "Policy",
+    "allow":            "Allow",
+    "deny":             "Deny",
+    "filteredipaddr":   "Filtered IP Addresses",
+    "filteredipaddrsetup":"Filtered IP Address Setup",
+    "ipformat":         "IP format",
+
+
+    
+    "tlss":             "Tunneled Link Setup Setting",
+    "serveraddr":       "Server address",
+    "serverport":       "Server port",
+    "updateinterval":   "Update interval",
+
+    
+    
+    "connectionstatus": "Connection status",
+    "connecting":       "Connecting",
+    "failure":          "Failure",
+    "success":          "Success",
+    "note":             "Note",
+
+    
+    "eaptype":          "EAP Type",
+    "identity":         "Identity",
+    "privatekeypassword": "Private key password",
+    "certificates":     "Certificates",
+    "cacertificate":    "CA certificate",
+    "selectcertifile":  "Select certificate file",
+    "clientcertificate":"Client certificate",
+    "clientprivatekey": "Client private key",
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+    
+    "english":          "English",
+    "korean":           "한국어",
+    "chinese":          "中文",
+
+    
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+    
+
+    
+    
+    
+ 
+
+    
+    "storagelist":      "Storage list",
+    "disksize":         "Disk size",
+    "disk":             "Disk",
+    "totalcapacity":    "Total capacity",
+    "freespace":        "Free space",
+    "status":           "Status",
+    "refreshsddevicelist": "Refresh SD dvice list",
+    "recorddevicecontrol": "Record device control",
+    "foramtvfat":       "Format(vfat)",
+    "formatext3":       "Format(ext3)",
+    "mount":            "Mount",
+    "eject":            "Eject",
+    "ready":            "Ready",
+    "formatting":       "Formatting",
+    "unmounted":        "Unmounted",
+    "ejected":          "Ejected",
+
+    
+
+    
+    "recordtype":       "Recording type",
+    "continuous":       "Continuous",
+    "event":            "Event",
+    "size":             "Size",
+    "recordingsetting": "Recording setting",
+    "maxfilesizeduration":"Maximum file size/duration",
+    "streamsource":     "Stream source",
+    
+    "recordstorageoption":"Recording Storage Options",
+    "storagedevice":   "Storage device",
+    "recordingresource":"Recording resource",
+    "recordingholdofftime":"Recording hold off time",
+    "vcameta":          "VCAmeata",
+    "mdmeta":           "MDmeta",
+    "overwritingrecords":"Delete files and recycle (oldest first)",
+    "videoonly":        "Video only",
+    "audiovideo":       "Audio+Video",
+
+    "sensoralarm":      "Sensor/Alarm",
+    "sensordi":         "Sensor (DI)",
+    "alarmdo":          "Alarm (DO)",
+    "resourcetype":     "Resource type",
+    "relay":            "Relay",
+    "voltage5v":        "Voltage (max. 5V)",
+    "triggertype":      "Trigger type",
+    "normalopen":       "Normally open",
+    "normalclose":      "Normally close",
+    "detectiontype":    "Detection type",
+    "edgetrigger":      "Edge trigger",
+    "leveltrigger":     "Level trigger",
+    "intervaltrigger":  "Interval between triggers",
+    "duration":         "Duration",
+    "alarmcontrol":     "Alarm (DO) Control",
+    "trigger":          "Trigger",
+    "active":           "Active",
+    "inactive":         "Inactive",
+
+    
+    "serialport":       "Serial port",
+    "baudrate":         "Baudrate",
+    "data":             "Data",
+    "parity":           "Parity",
+    "flowcontrol":      "Flow control",
+    "serialoverip":     "Serial over IP",
+    "udp":              "UDP",
+    "tcpclient":        "TCP client",
+    
+    "even":             "Even",
+    "odd":              "Odd",
+    
+    
+    
+    "celsius":          "Celsius",
+    "fahrenheit":       "Fahrenheit",
+    "dutycycle":        "Dutycycle",
+    "autoflip":         "Auto flip",
+    "digitalzoom":      "Digital zoom",
+
+    
+    "touringlist":      "Touring list",
+    "presetnumber":     "Preset number",
+    "speed":            "Speed",
+    "touringnumber":    "Touring number",
+    "up":               "Up",
+    "down":             "Down",
+    "ptzcontrol":       "PTZ control",
+    "zoom":             "Zoom",
+    "focus":            "Focus",
+    "preposition":      "Pre-position",
+    "set":              "Set",
+    "clear":            "Clear",
+    "go":               "Go",
+
+    
+    "enableautorun":    "Enable auto run",
+    "after":            "After",
+    "mins":             "min(s)",
+    "gotohomeposition": "Go to home position",
+    "startthour":       "Start tour",
+    "gotopreset":       "Go to preset",
+    "panning":          "Panning",
+    "angle":            "Angle",
+
+    
+    "protocollist":     "Protocol list",
+    "uartport":         "Uart port",
+    "ptzprotocol":      "PTZ protocol",
+    "ptzaddress":       "PTZ address",
+
+    
+    
+    
+    "enablegenetec":    "Enable Genetec",
+    "enableonvif":       "Enable ONVIF",
+    "enableauthentication": "Enable authentication",
+    "enablereplayattackprotect":    "Enable replay attack protection",
+    "enableprofileg":   "Enable profile G",
+
+    
+    "uploadfirmware":   "Upload Firmware Image",
+    "installedfirmware": "Installed firmware",
+    "selectfwimagefile":"Select firmware image file",
+
+    
+    "downloadlog":      "Download log",
+    "downloadsyslog":   "Download system log",
+    "downloadeventlog": "Download event log",
+    "ftplogbackupmode": "FTP Log Backup Mode",
+    "enableautobackup": "Enable auto backup",
+    "backup":           "Backup",
+    "ftplogbackupconf": "FTP Log Backup Configuration",
+    "shownotificationlist":"Show notification list",
+    "gotoftpnotification":  "Go to FTP Notification",
+    "loadnotificationinfosetting":"Load notification into setting",
+
+    
+    "confexport":       "Configuration export",
+    "confimport":       "Configuration import",
+    "export":           "Export",
+    "import":           "Import",
+
+    
+    "resetconfsbut":    "Reset all configuration settings, but",
+    "preservenetworksetting": "Preserve network settings",
+    "preserveaccountinfo": "Preserve user account information",
+    "preservetimezonesetting":"Preserve timezone setting",
+
+    
+    
+    "stopstart":        "Stop/Start",
+    "restart":          "Restart",
+    "update":           "Update",
+    "uninstall":        "Uninstall",
+
+    
+    
+
+
+    
+    "vcaenable":        "VCA enable",
+    "vcafeature":       "VCA feature",
+    "trackingmode":     "Tracking mode",
+    "surveillance":     "Surveillance",
+    "people":           "People",
+    "hardwarecode":     "Hardware code",
+    "activationcode":   "Activation code",
+    "installedlicense": "Installed license",
+    "activate":         "Activate",
+
+    "vcazoneconfiguration":"Zone and Rules",
+    
+    "logicalrules":     "Logical rules"
+
+
+
+
+}

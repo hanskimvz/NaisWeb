@@ -4,30 +4,18 @@
 <?php
 include ("../inc/common.php");
 echo $header;
-
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='network'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
 ?>
+
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup &gt; Maintenance &gt;</span><strong> Configuration Import/Export</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong><span>confimportexport</span></strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Configuration Export</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>confexport</span></h6>
 							</div>
 							<div class="card-body">
 								<div class="form-inline">
@@ -39,7 +27,7 @@ $db->close();
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Configuration Import</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>confexport</span></h6>
 							</div>
 							<div class="card-body">
 								<form id="formImportSubmit" action="/uapi-cgi/impexp.cgi?" enctype="multipart/form-data" method="post" target="iframeImport">
@@ -59,6 +47,14 @@ $db->close();
 		</div>
 	</div>
 	<div id="debug_console"></div>
-<?=$footer?>
 </body>
-</html>	
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+</script>
+</html>>	

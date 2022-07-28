@@ -3,13 +3,7 @@
 $fname ="/usr/hbin/param.db";
 $db = new SQLite3($fname);
 
-if ($_GET['page'] == 'netloss'){
-    $sq = "select * from param_tbl where group1='netloss'";
-}
-else if ($_GET['page'] == 'heartbeat'){
-    $sq = "select * from param_tbl where group1='heartbeat'";
-}
-else if ($_GET['page'] == 'event_profile') {
+if ($_GET['page'] == 'event_profile') {
     $sq = "select * from param_tbl where group1='eventprofile'";
 }
 

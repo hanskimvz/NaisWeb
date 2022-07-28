@@ -22,10 +22,12 @@ echo $header;
 									<input type="checkbox" id="formMdnsEnable" class="form-check-input" <?=($arr_rs['NETWORK.Mdns.enable']=="yes"?"checked":"")?>/>
 									<span>enable</span>
 								</label>
-								<div class="form-group form-inline">
+								<div class="form-group form-inline mb-0">
 									<span class="col-md-3">friendlyname</span>
 									<input type="text" id="formMdnsFriName" value="<?=$arr_rs['NETWORK.Mdns.friendlyname']?>" class="form-control-custom col-md-9" />
 								</div>
+							</div>
+							<div class="card-footer">
 								<button id="btnApply" class="btn btn-sm btn-primary"><span>apply</span></button>
 							</div>
 						</div>

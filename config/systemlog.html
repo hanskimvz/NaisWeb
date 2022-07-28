@@ -4,35 +4,37 @@
 <?php
 include ("../inc/common.php");
 echo $header;
-
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='network'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
 ?>
+
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup &gt; Maintenance &gt;</span><strong> System Log</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong><span>systemlog</span></strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Download Log</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>downloadlog</span></h6>
 							</div>
 							<div class="card-body">
-								<div class="form-inline">
-									<button id="btnDownload" class="btn btn-mini btn-outline-warning  mr-4">Download System Log</button>
-									<button id="btnDownloadEvent" class="btn btn-mini btn-outline-warning" >Download Event Log</button>
+								<button id="btnDownload" class="btn btn-mini btn-outline-warning  mr-4"><span>downloadsyslog</span></button>
+								<button id="btnDownloadEvent" class="btn btn-mini btn-outline-warning"><span>downloadeventlog</span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary"><span>ftplogbackupmode</span></h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<label class="form-check">
+										<input type="checkbox" id="formFTPLogMode" class="form-check-input" />
+										<span>enableautobackup</span>
+									</label>
+									<button id="formFTPLogBackup" class="btn btn-mini btn-warning ml-3"><span>backup</span></button>
 								</div>
 							</div>
 						</div>
@@ -40,89 +42,84 @@ $db->close();
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">FTP Log Backup Mode</h6>
-							</div>
-							<div class="card-body">
-								<label class="form-check">
-									<input type="checkbox" id="formFTPLogMode" />
-									<span> Enable auto backup<span>
-									<button id="formFTPLogBackup" class="btn btn-mini btn-warning">Backup</button>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-2">
-						<div class="card col-lg-6">
-							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">FTP Log Backup Configuration</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>ftplogbackupconf</span></h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
 									<div class="form-inline">
-										<span class="col-md-3">Name : </span>
+										<span class="col-md-3">name</span>
 										<input type="text" id="formName" class="form-control-custom" size="40" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">IP Address : </span>
+										<span class="col-md-3">ipaddr</span>
 										<input type="text" id="formURL" class="form-control-custom" size="40" />
 									</div>									
 									<div class="form-inline mt-1">
-										<span class="col-md-3">Port (1 ... 65535) : </span>
-										<input type="text" id="formPort" class="form-control-custom" size="40" />
+										<span class="col-md-3">port</span>
+										<input type="text" id="formPort" class="form-control-custom mr-2" size="5" />
+										<label>(1 ... 65535)</label>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">Target Directory : </span>
+										<span class="col-md-3">targetdirectory</span>
 										<input type="text" id="formTargetDirectory" class="form-control-custom" size="40" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">Account : </span>
+										<span class="col-md-3">account</span>
 										<input type="text" id="formID" class="form-control-custom" size="40" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">Password : </span>
+										<span class="col-md-3">password</span>
 										<input type="password" id="formPassword" class="form-control-custom" size="40" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">File name format : </span>
-										<input type="text" id="prefixFileType" class="form-control-custom" size="13" />
+										<span class="col-md-3">filenameformat</span>
+										<input type="text" id="prefixFileType" class="form-control-custom" size="20" />
 										<label>_YYYYMMddhhmmssXXX.log</label>
 									</div>
 								</div>
-								<button id="btnApply" class="btn btn-sm btn-primary mr-2">Apply</button>
-								<button id="btnShowList" class="btn btn-sm btn-primary">Show notification list</button>
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary mr-2"><span>apply</span></button>
+								<button id="btnShowList" class="btn btn-sm btn-primary"><span>shownotificationlist</span></button>
 							</div>
 						</div>
 					</div>
-					<div class="row mt-2">
+					<div class="row mt-4">
 						<div class="card col-lg-6">
-							<div class="card-body">
-								<div class="float-right">
-									<a id="linkEncoderProfile" href="#" class="04070537">Go to FTP Notification</a>
-								</div>
-								<button id="btnLoad" class="btn btn-mini btn-warning">Load notification into setting</button>
-							</div>
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">FTP Notification List</h6>
+								<h6 class="mb-0 font-weight-bold text-primary">ftpnotificationlist</h6>
 							</div>
 							<div class="card-body">
-								<div class="form-group">
+								<div class="form-group mb-0">
 									<div class="form-inline">
-										<span class="col-md-2">Id</span>
-										<span class="col-md-3">Name</span>
-										<span class="col-md-7">Description</span>
+										<span class="col-md-2">id</span>
+										<span class="col-md-3">name</span>
+										<span class="col-md-7">description</span>
 									</div>
-										<select size="7" id="formNotificationList" class="form-control form-control-sm"><option>11</option></select>
+									<select size="7" id="formNotificationList" class="form-control form-control-sm"><option>11</option></select>
 								</div>
+							</div>
+							<div class="card-footer">
+								<div class="float-right">
+									<a id="linkEncoderProfile" href="#"><span>gotoftpnotification</span></a>
+								</div>
+								<button id="btnLoad" class="btn btn-sm btn-warning"><span>loadnotificationinfosetting</span></button>
 							</div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
 	</div>
 	<div id="debug_console"></div>
-<?=$footer?>
 </body>
-</html>	
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+</script>
+</html>

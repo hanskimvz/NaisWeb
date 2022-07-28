@@ -4,42 +4,26 @@
 <?php
 include ("../inc/common.php");
 echo $header;
-
-// $fname ="/usr/hbin/param.db";
-// $db = new SQLite3($fname);
-// $sq = "select * from param_tbl where group1='eventprofile'";
-// $rs = $db->query($sq);
-
-// $arr_rs= array();
-
-// while ($row = $rs->fetchArray()) {
-// 	// print_r($row);
-// 	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-// }
-// $db->close();
-
-// $option_str = '';
-// for ($i=0; $i<$arr_rs['EVENTPROFILE.nbrofcount']; $i++){
-// 	$option_str = '<option value='.$arr_rs['EVENTPROFILE.P'.$i.'.id='].'>'.$arr_rs['EVENTPROFILE.P'.$i.'.enable'].''.$arr_rs['EVENTPROFILE.P'.$i.'.name'].' '.$arr_rs['EVENTPROFILE.P0.description'].'</option>';
-// }
-
 ?>
+
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup</span> &gt; <span>eventConf</span> &gt; <strong><span>eventrules</span></strong></p>
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Event Configuration</span> > <strong>Event Rules</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary"><span>configuration</span></h6>
+								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
 							</div>
 							<div class="card-body">
-								<label class="form-check">
+								<label class="form-check mb-0">
 									<input type="checkbox" id="formEventRulesEnable" class="form-check-input"/>
 									<span>Enable event rules</span>
 								</label>
+							</div>
+							<div class="card-footer text-center">
 								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
 							</div>
 						</div>
@@ -47,49 +31,53 @@ echo $header;
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary">Event Rule List</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Event rule list</h6>
 							</div>
 							<div class="card-body">
-								<div class="form-group">
+								<div class="form-group mb-0">
 									<div class="form-inline">
 										<span class="col-md-1">Use</span>
 										<span class="col-md-3">Name</span>
 										<span class="col-md-5">Description</span>
 									</div>
-									<select size="10" id="formProfileList" class="form-control-custom col-md-12 mb-2"><?=$option_str?></select>
-									<button id="btnAdd" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Add...</button>
-									<button id="btnCopy" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Copy...</button>
-									<button id="btnModify" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Modify...</button>
-									<button id="btnRemove" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Remove</button>
+									<select size="10" id="formProfileList" class="form-control-custom col-md-12 mb-2"></select>
 								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnAdd" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Add</button>
+								<button id="btnCopy" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Copy</button>
+								<button id="btnModify" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Modify</button>
+								<button id="btnRemove" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#eventProfileModal">Remove</button>
 							</div>
 						</div>
 					</div>
-					<div class="row mt-2">
+					<div id="eventprofileinfo" class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header">
 								<h6 class="m-0 font-weight-bold text-primary">Information</h6>
 							</div>
 							<div class="card-body">
-								<div class="form-group form-inline">
-									<span class="col-md-3">Enable profile :</span>
-									<span  id="infoEventPFEnable"></span>
-								</div>
-								<div class="form-group form-inline">
-									<span class="col-md-3">Name :</span>
-									<span id="infoEventPFName"></span>
-								</div>
-								<div class="form-group form-inline">
-									<span class="col-md-3">Description :</span>
-									<span id="infoEventPFDescription"></span>
-								</div>
-								<div class="form-group form-inline">
-									<span class="col-md-3">Event sources :</span>
-									<span id="infoEventPFSources"></span>
-								</div>
-								<div class="form-group form-inline">
-									<span class="col-md-3">Event action :</span>
-									<span id="infoEventPFNotification"></span>
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-3">Enable profile</span>
+										<label  id="infoEventPFEnable"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Name</span>
+										<span id="infoEventPFName"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Description</span>
+										<label id="infoEventPFDescription"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Event source</span>
+										<label id="infoEventPFSources"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Event action</span>
+										<label id="infoEventPFNotification"></label>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -104,7 +92,7 @@ echo $header;
         <div class="modal-dialog modal-lg" role="document" >
             <div class="modal-content">
 				<div class="modal-header mb-0">
-                    <h5 class="modal-title" id="exampleModalLabel">Event Profile Info</h5>
+                    <h6 class="modal-title" id="exampleModalLabel">Event Profile Info</h6>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">x</span>
                     </button>
@@ -122,11 +110,11 @@ echo $header;
 								</label>
 								<div class="form-group">
 									<div class="form-inline">
-										<span class="col-md-3">Name :</span>
+										<span class="col-md-3">Name</span>
 										<input type="text" id="formEventPFName" class="form-control-custom" size="30"/>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">Description :</span>
+										<span class="col-md-3">Description</span>
 										<input type="text" id="formEventPFDesc" class="form-control-custom" size="60"/>
 									</div>
 								</div>
@@ -135,8 +123,8 @@ echo $header;
 					</div>
 					<div class="tab mt-2">
 						<ul class="nav nav-tabs" role="tablist">
-							<li class="nav-item"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab">Event Source</a></li>
-							<li class="nav-item"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab">Event Action</a></li>
+							<li class="nav-item"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab"><span>Event Source</span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab"><span>Event Action</span></a></li>
 						</ul>
 						<div class="tab-content mt-1">
 							<div class="tab-pane active" id="tab-1" role="tabpanel">
@@ -264,14 +252,28 @@ echo $header;
     </div>
 </body>
 <?=$footer?>
-
 <script>
-function loadEvnetProfile(){
-	url = "/config/query_config.php?page=event_profile";
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+function loadEventProfile(){
+	// url = "/config/query_config.php?page=event_profile";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=EVENTPROFILE";
 	$.getJSON(url, function(response) {
 		console.log(response);
 		if (response['EVENTPROFILE.enable'] == 'yes') {
 			$("#formEventRulesEnable").prop("checked", true);
+		}
+		for (i=0; i<response['EVENTPROFILE.nbrofcount']; i++){
+			$("select#formProfileList").append(
+				'<option value="' + response['EVENTPROFILE.P'+i+'.id'] +'">&nbsp;' + 
+					FillText(response['EVENTPROFILE.P'+i+'.enable'], 16, "left") + 
+					FillText(response['EVENTPROFILE.P'+i+'.name'], 50, "left") + 
+					FillText(response['EVENTPROFILE.P'+i+'.description'], 20, "left") + '</option>');
 		}
 	});
 }
@@ -294,7 +296,7 @@ function loadEvnetProfile(){
 	// 		console.log("ERROR : ", e);
 	// 	}
 	// });	
-loadEvnetProfile();
+loadEventProfile();
 
 </script>
 </html>

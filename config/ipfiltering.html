@@ -66,33 +66,33 @@ echo $header;
 			</div>
 		</div>
 	</div>
-
-
-
-	<div class="modal fade" id="filtered_ip" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><span>filteredipaddrsetup</span></h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-					<div class="form-group form-inline">
-						<span class="col-md-5">IP Address :</span>
-						<input type="text" id="formIPAddr" class="form-control form-control-sm" />
-					</div>
-					<p class="ml-5"><span>ipformat</span> :<br />xxx.xxx.xxx.xxx<br />xxx.xxx.xxx.xxx/xx<br />xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx<br /></p>
-				</div>
-                <div class="modal-footer">
-                    <button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal"><span>apply</span></button>
-					<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal"><span>cancel</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
 	<div id="debug_console"></div>
+
+
+<div class="modal fade" id="filtered_ip" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"><span>filteredipaddrsetup</span></h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group form-inline">
+					<span class="col-md-5">IP Address :</span>
+					<input type="text" id="formIPAddr" class="form-control form-control-sm" />
+				</div>
+				<p class="ml-5"><span>ipformat</span> :<br />xxx.xxx.xxx.xxx<br />xxx.xxx.xxx.xxx/xx<br />xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx<br /></p>
+			</div>
+			<div class="modal-footer">
+				<button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal"><span>apply</span></button>
+				<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal"><span>cancel</span></button>
+			</div>
+		</div>
+	</div>
+</div>
+	
 </body>
 <?=$footer?>
 <script>

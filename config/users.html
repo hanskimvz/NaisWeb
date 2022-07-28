@@ -10,36 +10,38 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong ><span>users</span></strong></p>
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>Users</strong></p>
 				<div class="container-fluid">
 					<div class="row col-lg-6">
 						<div class="card col-md-12">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary"><span>userlist<span></h6>
+								<h6 class="m-0 font-weight-bold text-primary">User List</h6>
 							</div>
 							<div class="card-body">
-								<div class="form-group">
+								<div class="form-group mb-0">
 									<select id="formUserList" class="form-control" size="10"><option></option></select>
 								</div>
-								<div class="form-group mb-0">
-									<button id="btnAdd" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>add</span>...</button>
-									<button id="btnModify" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userInfoModal"><span>modify</span>...</button>
-									<button id="btnRemove" class="btn btn-primary btn-sm ml-2" data-toggle="modal" data-target="#userDelModal"><span>remove</span></button>
-								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnAdd" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#userInfoModal">Add</button>
+								<button id="btnModify" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#userInfoModal">Modify</button>
+								<button id="btnRemove" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#userDelModal">Remove</button>
 							</div>
 						</div>
 					</div>
 					<div class="row  col-lg-6 mt-4">
 						<div class="card col-md-12">	
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary"><span class="mb-0">userauth</span></h6>
+								<h6 class="m-0 font-weight-bold text-primary">User Authentication</h6>
 							</div>
 							<div class="card-body">
-								<label class="form-check">
+								<label class="form-check mb-0">
 									<input type="checkbox" id="formAnonymous" class="form-check-input" />
-									<span>anonymousview</span>
+									<span class="form-check-label">Enable anonymous viewer login (no user name or password required)</span>
 								</label>
-								<button id="btnApply" class="btn btn-primary btn-sm ml-2"><span>apply</span></button>
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-primary btn-sm ml-2">Apply</button>
 							</div>
 						</div>
 					</div>
@@ -54,47 +56,46 @@ echo $header;
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"><span>userinformation</span></h5>
+				<h6 class="modal-title" id="exampleModalLabel">User information</h6>
 				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">x</span>
 				</button>
 			</div>
-			<div class="modal-body">
+			<div class="card-body">
 				<div class="form-group form-inline">
-					<span class="col-md-5">username</span>
-					<input type="text" id="formUserName" class="form-control" />
+					<span class="col-md-5">User name</span>
+					<input type="text" id="formUserName" class="form-control form-control-sm" />
 				</div>
 				<div class="form-group form-inline">
-					<span class="col-md-5">password</span>
-					<input type="password" id="formUserPassword" class="form-control"/>
+					<span class="col-md-5">Password</span>
+					<input type="password" id="formUserPassword" class="form-control form-control-sm"/>
 				</div>
 				<div class="form-group form-inline">
-					<span class="col-md-5">confirmpassword</span>
-					<input type="password" id="formUserConfirmPassword" class="form-control"/>
+					<span class="col-md-5">Confirm Password</span>
+					<input type="password" id="formUserConfirmPassword" class="form-control form-control-sm"/>
 				</div>
-				
-				
-				<div class="form-group ml-3">
-					<label><span>usergroup</span></label>
+		
+				<div class="form-group ml-3 mb-0">
+					<span>User group</span>
 					<div class="form-group ml-2">
-						<label for="formUserGroup0" class="form-check" >
+						<label class="form-check mb-0">
 							<input type="radio" id="formUserGroup0" name="formUserGroup" value="viewer" class="form-check-input" />
-							<span class="form-check-label">viewer</span>
+							<span>Viewer</span>
 						</label>
-						<label for="formUserGroup1" class="form-check">
-							<input type="radio" id="formUserGroup1" name="formUserGroup" value="viewer" class="form-check-input" />
-							<span class="form-check-label">operator</span>
+						<label class="form-check mb-0">
+							<input type="radio" id="formUserGroup1" name="formUserGroup" value="operator" class="form-check-input" />
+							<span class="form-check-label">Operator</span>
 						</label>
-						<label for="formUserGroup2" class="form-check">
-							<input type="radio" id="formUserGroup2" name="formUserGroup" value="viewer" class="form-check-input" />
-							<span class="form-check-label">administrator</span>
+						<label class="form-check">
+							<input type="radio" id="formUserGroup2" name="formUserGroup" value="administrator" class="form-check-input" />
+							<span class="form-check-label">Administrator</span>
 						</label>
 					</div>
 				</div>										
 			</div>
 			<div class="modal-footer">
-				<button id="modalCancel" class="btn btn-secondary" data-dismiss="modal"><span>cancel</span></button>
-				<button id="modalApply" class="btn btn-primary" data-dismiss="modal"><span>apply</span></button>
+				<button id="modalCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button id="modalApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
 			</div>
 		</div>
 	</div>
@@ -112,6 +113,34 @@ $("button").on("click", function () {
 		console.log($("#formUserName").val());
 	}
 });
+
+$("select").on("click", function () {
+	console.log(this);
+	console.log(this.id, this.value);
+});
+
+
+function loadUSERConfig(){
+	// url = "/inc/query.php?page=upnp";
+	user_level = ['Administrator', 'Operator', 'Viewer'];
+	url = "/uapi-cgi/param.cgi?action=list&table=user_tbl&format=json";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		$("#formUserList").empty();
+		response.forEach(function(item){
+			// $("select#formUserList").append("<option value='" + item.id + "'></option>")
+			// .find("option").last()
+			// .append("&nbsp;"+FillText(item.id, 30, "left")+FillText($user_level[item.level], 20, "left"));
+			$("select#formUserList").append("<option value='" + item.id + "'>&nbsp;"+FillText(item.id, 30, "left") + FillText(user_level[item.level], 20, "left")+"</option>");
+		});
+		// if (response['NETWORK.Upnp.enable']=='yes'){
+		// 	$("#formUpnpEnable").prop('checked', true);
+		// }
+		// $("#formUpnpFriName").val(response['NETWORK.Upnp.friendlyname']);
+	});
+}
+
+loadUSERConfig();
 </script>
 
 </html>

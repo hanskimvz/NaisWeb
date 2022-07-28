@@ -4,54 +4,42 @@
 <?php
 include ("../inc/common.php");
 echo $header;
-
-$fname ="/usr/hbin/param.db";
-$db = new SQLite3($fname);
-$sq = "select * from param_tbl where group1='network'";
-$rs = $db->query($sq);
-
-$arr_rs= array();
-
-while ($row = $rs->fetchArray()) {
-	// print_r($row);
-	$arr_rs[$row['groupPath'].'.'.$row['entryName']] = $row['entryValue'];
-}
-$db->close();
 ?>
+
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>Setup &gt; Maintenance &gt;</span><strong> Third Settings</strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong><span>thirdmngr</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Stop/Start</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>stopstart</span></h6>
 							</div>
 							<div class="card-body">
-								<div class="form-inline mb-2">
+								<div class="form-inline mb-0">
 									<span id="serverMessage" class="col-md-3">server_mesg</span>
 									<span id="runStatus">run_st</span>
 								</div>
-								<button id="btnServerStart" class="btn btn-mini btn-outline-warning">Start</button>
-								<button id="btnServerStop" class="btn btn-mini btn-outline-warning">Stop</button>
-								<button id="btnServerRestart" class="btn btn-mini btn-outline-warning">Restart</button>
+							</div>
+							<div class="card-footer">
+								<button id="btnServerStart" class="btn btn-mini btn-outline-warning"><span>start</span></button>
+								<button id="btnServerStop" class="btn btn-mini btn-outline-warning"><span>stop</span></button>
+								<button id="btnServerRestart" class="btn btn-mini btn-outline-warning"><span>restart</span></button>
 							</div>
 						</div>
 					</div>
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Update</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>update</span></h6>
 							</div>
 							<div class="card-body">
-								<form enctype="multipart/form-data" action="/uapi-cgi/fwupload.cgi" method="post">
-									<li id="firmware">
-										<input name="Filedata" id="Filedata" type="file" accept=".enc" />
-										<input type="hidden" name="jqUploader" value="1" />
-										<input id="btnStart" type="submit" name="submit" value="START" class="btn btn-sm btn-warning" />
-									</li>
+								<form enctype="multipart/form-data" action="/uapi-cgi/fwupload.cgi" method="post" class="mb-0">
+									<input name="Filedata" id="Filedata" type="file" accept=".enc" />
+									<input type="hidden" name="jqUploader" value="1" />
+									<button id="btnStart" type="submit" class="btn btn-sm btn-warning"><span>start</span></button>
 								</form>
 							</div>
 						</div>
@@ -59,10 +47,10 @@ $db->close();
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary">Uninstall</h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><span>uninstall</span></h6>
 							</div>
 							<div class="card-body">
-								<button id="btnServerUninstall" class="btn btn-sm btn-secondary">Uninstall</button>
+								<button id="btnServerUninstall" class="btn btn-sm btn-secondary"><span>uninstall</span></button>
 							</div>
 						</div>
 					</div>
@@ -70,6 +58,15 @@ $db->close();
 			</div>
 		</div>
 	</div>
+	<div id="debug_console"></div>
 </body>
 <?=$footer?>
-</html>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>	

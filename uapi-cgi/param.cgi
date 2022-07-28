@@ -4,7 +4,8 @@
 // ini_set( 'display_errors', '1' );
 
 $_COOKIE['role'] ='admin';
-// print "cookie: "; print_r($_COOKIE);
+// print "cookie: "; print_r($_COOKIE); 
+
 if ($_COOKIE['role'] !='admin') {
     print "not permitted \n";
     exit();
@@ -21,7 +22,7 @@ if (!isset($_GET['action'])){
 
 $fname ="/mnt/db/param.db";
 
-if ($_GET['action'] == 'list'){
+if ($_GET['action'] == 'list' && $_GET['table']=='param_tbl'){
     if (!isset($_GET['format'])){
         $_GET['format'] = 'plain';
     }
@@ -85,6 +86,21 @@ if ($_GET['action'] == 'list'){
         }
     }
    
+}
+else if ($_GET['action'] == 'list' && $_GET['table']=='user_tbl'){
+    $arr_rs = array();
+    $sq = "select id, passwd, level, explain, login_count, lastlogin, regdate from ".$_GET['table']." ";
+    $db = new SQLite3($fname); 
+    $rs = $db->query($sq);
+    while ($row = $rs->fetchArray()) {
+        array_push($arr_rs, array("id"=>$row['id'], "level"=>$row['level'], 'explain'=>$row['explain'], 'login_count'=>$row['login_count'], "last_login"=>$row['lastlogin']));
+    }
+    $db->close();
+    header("Content-Type: text/json");
+    require_once $_SERVER['DOCUMENT_ROOT']."/inc/json.php";
+    $json = new Services_JSON();
+    $json_str = $json->encode($arr_rs);
+    print($json_str);    
 }
 
 else if($_GET['action']=='update'){

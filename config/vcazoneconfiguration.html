@@ -1,44 +1,28 @@
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
-	'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
-<head>
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<meta http-equiv='imagetoolbar' content='no' />
-	<meta http-equiv="Cache-Control" content="no-cache"/>
-	<meta http-equiv="Expires" content="0"/>
-	<meta http-equiv="Pragma" content="no-cache"/>
-	<title></title>
-	<link type='text/css' href='../css/config.css' rel='stylesheet' />
-	<link type='text/css' href='../css/theme.css' rel='stylesheet' />
-	<link type='text/css' href='../css/themes/base/jquery-ui.css' rel='stylesheet' />
-	<link type='text/css' href='../css/config/vcazoneconfiguration.css' rel='stylesheet' />
-	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.ui.mouse.js"></script>
-	<script type="text/javascript" src="../js/jquery.ui.slider.js"></script>
-	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
-	<script type="text/javascript" src="../js/common.js"></script>
-	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
-	<script type="text/javascript" src="../js/jquery.effects.core.js"></script>
-	<script type="text/javascript" src="../js/jquery.effects.blind.js"></script>
-	<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
-	<script type="text/javascript" src="../js/jquery.tooltip.js"></script>
-	<script type="text/javascript" src="../js/cap.js"></script>
-	<script type='text/javascript' src='../js/cap.vca.js'></script> 
-	<script type="text/javascript" src="../js/uapi.player.js"></script>
-	<script type='text/javascript' src='../js/cap.player.js'></script>
-	<script type='text/javascript' src='../js/xml2json.min.js'></script>
-	<script type="text/javascript" src="vcacomplexrules/actiondefinition.js"></script>
-	<script type="text/javascript" src="vcacomplexrules/clausedefinition.js"></script>
-	<script type="text/javascript" src="vcacomplexrules/data.js"></script>
-	<script type='text/javascript' src='../js/config/vcazoneconfiguration.js'></script> 
-</head>
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>vcaconf</span> > <strong><span>vcazoneconfiguration</span></strong></p>
+				<div class="container-fluid">
+					<div class="row" >
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary"><span>zonenrules</span></h6>
+							</div>
+							<div class="card-body">
 <body id='config-page'>
 	<p class='menuLocationInfo'>
 		<span class="04050201">Setup > VCA ></span> 
 		<span id='pagename' class="04050202">Zones and Rules</span>
 	</p>
-	<ul class='box vcaDisabled' style='display:none'>
+	<ul class='box vcaDisabled' style='display:'>
 		<li class='box-title 04050202'><h2>Zones and Rules</h2></li>
 		<li class='box-content'>
 			<p> <span class='04050204'>VCA is disabled, please go to the </span><span class='menuLocationInfo 04050205'>VCA > </span><span id='pagename' class='04050206'>Enable/Disable</span><span class ='04050207'> page to enable VCA.</span></p>
@@ -51,7 +35,7 @@
 			<span class="04050209">Loading Data - Please Wait</span>
 		</div>
 	</ul>
-	<ul class='vcaEnabled' style='display:none'>
+	<ul class='vcaEnabled' style='display:'>
 		<li class='box-title'><h2 class="04050203">Zones and Rules</h2></li>
 		<li>
 			<div id="rule_tabs" class="tab_inline">
@@ -97,5 +81,20 @@
 		<button id='btnApply' disabled='true'><span class="04050211" >Apply</span></button>
 		<button id='btnRestoreDefaults'><span class="04050215" >Restore Defaults</span></button>
 	</div>
-</body>
+	</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+</script>
 </html>

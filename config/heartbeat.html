@@ -4,44 +4,47 @@
 include ("../inc/common.php");
 echo $header;
 ?>
+
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> &gt; <span>eventconf</span> &gt; <strong><span>heartbeat</span></strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>Event Configuration</span> > <strong>Heartbeat</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary">configuration</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
 							</div>
 							<div class="card-body">
 								<label class="form-check">
 									<input type="checkbox" id="formHeartBeatEnable" class="form-check-input"/>
 									<span>Enable</span>
 								</label>
-								<div class="form-group ml-4">
+								<div class="form-group ml-4 mb-0">
 									<div class="form-inline mb-1">
 										<span class="col-md-3">Interval</span>
 										<input type="range" id="sliderHeartbeatInterval"  min="1" max="300" style="width:200px;" class="slider mr-2">
 										<input type="text" size="5" id="formHeartbeatInterval" class="form-control-custom text-center mr-2"/>
-										<label>(5 ... 300 sec(s))</label>
+										<label>(5 ... 300 <span>sec(s)</span>)</label>
 									</div>
 									<label class="form-check">
 										<input type="checkbox" id="formHeartBeatServer" class="form-check-input"/>
-										<span>TCP Server</span>
+										<span>TCP server</span>
 									</label>
 									<label class="form-check">
 										<input type="checkbox" id="formHeartBeatNotification" class="form-check-input"/>
-										<span>TCP Notification</span>
+										<span>TCP notification</span>
 									</label>
 									<label class="form-check">
 										<input type="checkbox" id="formHeartBeatMulticast" class="form-check-input"/>
 										<span>Multicast</span>
 									</label>
 								</div>								
-								<button id="btnApply" class="btn btn-mini btn-primary">Apply</button>
 							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+							</div>							
 						</div>
 					</div>
 				</div>
@@ -57,37 +60,22 @@ $(".slider").on("input", function () {
  	$("#" + xt).val(this.value);
 });
 
-// x = $("span").map(function(){
-// 	// return $(this).text();
-// 	return $(this);
-// }).get();
-
-// var lang = [];
-// lang['Setup'] = "설정";
-// lang['Event Configuration'] = "이벤트 설정";
-// lang['Heart Beat'] = "하트비트";
-// lang['Configuration'] = "설정";
-// $("span").each(function(idx, item){
-// 	x = $(this).text();
-// 	$(this).text(lang[x]);
-// 	// x = item;
-// 	// console.log(x);
-// });
-
-// console.log(x);
-
-// $("span").forEach(function(item){
-// 	console.log(item.text());
-// })
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
 
 
-function loadNetlossConfig(){
+function loadHEARTBEATConfig(){
 	// HEARTBEAT.enable=yes
 	// HEARTBEAT.interval=60
 	// HEARTBEAT.Multicast.enable=no
 	// HEARTBEAT.Tcp.enable=no
 	// HEARTBEAT.Tcppush.enable=yes
-	url = "/config/query_config.php?page=heartbeat";
+	// url = "/config/query_config.php?page=heartbeat";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=HEARTBEAT";
 	$.getJSON(url, function(response) {
 		// console.log(response);
 		if (response['HEARTBEAT.enable'] == 'yes') {
@@ -108,6 +96,6 @@ function loadNetlossConfig(){
 	});
 }
 
-loadNetlossConfig();
+loadHEARTBEATConfig();
 </script>
 </html>
