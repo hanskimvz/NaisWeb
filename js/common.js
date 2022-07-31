@@ -45,3 +45,25 @@ function padLeft(nr, len = 1, padChr = `0`){
 function toTop(){
     $("html, body").animate({ scrollTop: 0 }, "slow");
 }
+
+
+
+
+var options =  { 
+    onChange: function(cep, event, currentField, options){
+        if(cep){
+            var ipArray = cep.split(".");
+            for (i in ipArray){
+                if(ipArray[i] != "" && parseInt(ipArray[i]) > 255){
+                    ipArray[i] =  '255';
+                }
+            }
+            var resultingValue = ipArray.join(".");
+            $(currentField).val(resultingValue);
+        }
+    }
+};
+$(".ipv4").mask("099.099.099.099", options);
+$(".date").mask("0000-00-00");
+$(".time").mask("00:00:00");
+$(".datetime").mask("0000-00-00 00:00:00");

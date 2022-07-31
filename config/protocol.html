@@ -9,20 +9,20 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>ptzconf</span> > <strong><span>protocol</span></strong></p>
+				<p class="menuLocationInfo"><span>Setup</span> > <span>PTZ configuration</span> > <strong>Protocol</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary"><span>protocollist</span></h6>
+								<h6 class="m-0 font-weight-bold text-primary">Protocol list</h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group mb-0">
 									<div class="form-inline">
-										<span class="col-md-1">id</span>
-										<span class="col-md-3">protocol</span>
-										<span class="col-md-3">address</span>
-										<span class="col-md-3">uartport</span>
+										<span class="col-md-1">ID</span>
+										<span class="col-md-3">Protocol</span>
+										<span class="col-md-3">Address</span>
+										<span class="col-md-3">Uart port</span>
 									</div>
 									<select size="8" id="formPTZDriverList" class="form-control-custom col-md-12 "><option></option></select>
 								</div>
@@ -32,36 +32,36 @@ echo $header;
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header">
-								<h6 class="m-0 font-weight-bold text-primary"><span>information</span></h6>
+								<h6 class="m-0 font-weight-bold text-primary">Information</h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group mb-0">
 									<div class="form-inline">
-										<span class="col-md-3">id</span>
+										<span class="col-md-3">ID</span>
 										<label id="formPTZID"></label>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">ptzprotocol</span>
+										<span class="col-md-3">PTZ protocol</span>
 										<select id="formPTZProtocol" class="form-control-custom" style="width:200px;"><option></option></select>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">ptzaddress</span>
+										<span class="col-md-3">PTZ address</span>
 										<input type="text" id="formPTZAddress" class="form-control-custom mr-2"></input>
-										<label> (0 ... 65536) </label>
+										<label>(0 ... 65536)</label>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">uartport</span>
+										<span class="col-md-3">Uart port</span>
 										<label id="formPTZUartport"></label>
 									</div>
 								</div>
 							</div>
 							<div class="card-footer" >
-								<button id="btnApply" class="btn btn-sm btn-primary"><span>apply</span></button>
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
 							</div>
 						</div>
 					</div>
 					<div class="row mt-2">
-						<span>The serial port mode is SerialOverIP.</span>&nbsp;
+						<span class="text-warning">The serial port mode is SerialOverIP.</span>&nbsp;
 						<a id="linserialport" href="#"><span>Go to Serial Port Menu and select PTZ mode to use PTZ control.</span></a>
 					</div>
 				</div>

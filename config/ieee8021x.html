@@ -10,32 +10,32 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <span class="font-weight-bold">ieee802.x</span></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>IEEE802.x</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group mb-0">
 									<label class="form-check">
 										<input type="checkbox" id="network_ieee8021x_enable" class="form-check-input" />
-										<span>enable</span>
+										<span>Enable</span>
 									</label>
 									<div class="form-inline">
-										<span class="col-md-3">eaptype</span>
+										<span class="col-md-3">EAP Type</span>
 										<select id="network_ieee8021x_eaptype" class="form-control-custom">
-											<option value="tls"> EAP-TLS</option>
-											<option value="peap"> EAP-PEAP</option>
+											<option value="tls">EAP-TLS</option>
+											<option value="peap">EAP-PEAP</option>
 										</select>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">identity</span>
+										<span class="col-md-3">Identity </span>
 										<input type="text" id="network_ieee8021x_id" class="form-control-custom mr-2" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">privatekeypassword</span>
+										<span class="col-md-3">Private key password</span>
 										<input type="password" id="network_ieee8021x_pwd" class="form-control-custom mr-2" />
 									</div>
 								</div>
@@ -45,46 +45,48 @@ echo $header;
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>certificates</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Certificates</h6>
 							</div>
 							<div class="card-body">
 								<form id="form_ca" enctype="multipart/form-data" action="/uapi-cgi/certmngr.cgi" method="post" class="form-group">
-									<span>cacertificate :</span>
+									<span>CA certificate</span><span class="ml-4" hidden>No certificate configured.</span>
 									<div class="form-group form-inline">
-										<span class="col-md-3">selectcertifile</span>
+										<span class="col-md-3">Select certificate file</span>
 										<input name="Filedata" id="caFiledata" type="file" />
 										<input type="hidden" name="action" value="installstd" />
 										<input type="hidden" name="type" value="ca" />
-										<input class="btn btn-mini btn-warning mr-2" type="submit" name="btnStartCACert" id="btnStartCACert"/>
-										<button id="btnRemoveCACert" class="btn btn-mini btn-secondary"><span>remove</span></button>
+										<button class="btn btn-mini btn-warning mr-2" type="submit" name="btnStartCACert" id="btnStartCACert">Submit<buton>
+										<button id="btnRemoveCACert" class="btn btn-mini btn-secondary">Remove</button>
 									</div>
 								</form>
 								<form id="form_ca" enctype="multipart/form-data" action="/uapi-cgi/certmngr.cgi" method="post" class="form-group">
-									<span>clientcertificate</span>
+									<span>Client certificate</span><span class="ml-4" hidden>No certificate configured.</span>
 									<div class="form-group form-inline">
-										<span class="col-md-3">selectcertifile</span>
+										<span class="col-md-3">Select certificate file</span>
 										<input name="Filedata" id="clientFiledata" type="file" />
 										<input type="hidden" name="action" value="installstd" />
 										<input type="hidden" name="type" value="client" />
-										<input class="btn btn-mini btn-warning mr-2" type="submit" name="btnStartClientCert" id="btnStartClientCert"/>
-										<button id="btnRemoveClientCert" class="btn btn-mini btn-secondary"><span>remove</span></button>
+										<button class="btn btn-mini btn-warning mr-2" type="submit" name="btnStartClientCert" id="btnStartClientCert">Submit<buton>
+										<button id="btnRemoveClientCert" class="btn btn-mini btn-secondary">Remove</button>
 									</div>
 								</form>
 								<form id="form_ca" enctype="multipart/form-data" action="/uapi-cgi/certmngr.cgi" method="post" class="form-group">
-									<span>clientprivatekey</span>
+									<span>Client private key</span><span class="ml-4" hidden>No certificate configured.</span>
 									<div class="form-group form-inline">
-										<span class="col-md-3">selectcertifile</span>
+										<span class="col-md-3">Select certificate file</span>
 										<input name="Filedata" id="clientprivatekeyFiledata" type="file" />
 										<input type="hidden" name="action" value="installstd" />
 										<input type="hidden" name="type" value="clientprivatekey" />
-										<input class="btn btn-mini btn-warning mr-2" type="submit" name="btnStartClientPKeyCert" id="btnStartClientPKeyCert"/>
-										<button id="btnRemoveClientPKeyCert" class="btn btn-mini btn-secondary"><span>remove</span></button>
+										<button class="btn btn-mini btn-warning mr-2" type="submit" name="btnStartClientPKeyCert" id="btnStartClientPKeyCert">Submit<buton>
+										<button id="btnRemoveClientPKeyCert" class="btn btn-mini btn-secondary">Remove</button>
 									</div>
 								</form>
 							</div>
+							<div class="card-footer text-center">
+								<button id="btnApply" class="btn btn-sm btn-primary mt-2">Apply</button>
+							</div>
 						</div>
 					</div>
-					<button id="btnApply" class="btn btn-sm btn-primary mt-2"><span>apply</span></button>
 				</div>
 			</div>
 		</div>
@@ -93,6 +95,14 @@ echo $header;
 </body>
 <?=$footer?>
 <script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+
 function loadIEEE802Config(){
 	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Ieee8021x";
 	$.getJSON(url, function(response) {

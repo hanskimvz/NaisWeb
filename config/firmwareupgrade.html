@@ -10,20 +10,20 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong><span>firmwareupgrade</span></strong></p>
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>Firmwar eupgrade</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>uploadfirmware</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Upload firmware</h6>
 							</div>
 							<div class="card-body">
 								<form enctype="multipart/form-data" action="/uapi-cgi/fwupload.cgi" method="post" class="form-group">
 									<div class="form-inline">
-										<span class="col-md-3 mb-2">installedfirmware</span>
+										<span class="col-md-3 mb-2">Installed firmware</span>
 									</div>
 									<div class="form-inline">
-										<span class="col-md-3">selectfwimagefile</span>
+										<span class="col-md-3">Select firmware image file</span>
 										<input name="Filedata" id="Filedata" type="file" accept=".enc" />
 										<input type="hidden" name="jqUploader" value="1" />
 										<input class="btn btn-sm btn-warning mr-2" id="btnStart" type="submit" name="submit" value="START" />		

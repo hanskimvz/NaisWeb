@@ -88,7 +88,9 @@ $(".collapse-item").on("click", function () {
 	console.log(this);
 	$(".collapse-item").removeClass("active");
     $(this).addClass("active");
+    toTop();
 });
+
 
 </script>
 </html>

@@ -10,26 +10,26 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <strong><span>rtmp</span></strong></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>RTMP</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
 							</div>
 							<div class="card-body">
 								<lable class="form-check">
 									<input type="checkbox" id="network_rtmp_enable" class="form-check-input" />
-									<span>enable</span>
+									<span>Enable RTMP</span>
 								</label>
 								<div class="form-group mb-0">
 									<div class="form-inline">
-										<span class="col-md-2">port</span>
+										<span class="col-md-2">Port</span>
 										<input type="text" id="network_rtmp_port" class="form-control-custom mr-2" size="20" />
 										<label>(1024 ... 65535)</label>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-2">chunksize</span>
+										<span class="col-md-2">Chunk size</span>
 										<input type="text" id="network_rtmp_chunksize" class="form-control-custom mr-2" size="20" />
 										<label>(4096 ... 2147483646)</label>
 									</div>
@@ -38,55 +38,56 @@ echo $header;
 						</div>
 					</div>
 <?PHP
+	$stream = ["First stream", "Second stream" ];
 	for ($i=0; $i<2; $i++) {
 ?>					
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>stream_<?=$i?></span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary"><?=$stream[$i]?></h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
 									<div class="form-inline">
-										<span class="col-md-2">name</span>
+										<span class="col-md-2">Name</span>
 										<input type="text" id="network_rtmp_st<?=$i?>_appname" class="form-control-custom" size="40" />
 									</div>
 									<div class="form-inline mt-1 mr-2">
-										<span class="col-md-2">instance</span>
+										<span class="col-md-2">Instance</span>
 										<input type="text" id="network_rtmp_st<?=$i?>_appinstance" class="form-control-custom" size="40" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-2">url</span>
+										<span class="col-md-2">URL</span>
 										<span id="network_rtmp_st<?=$i?>_url"></span>
 									</div>
 								</div>
 								<div class="form-group mb-0">
 									<label class="form-check">
 										<input type="checkbox" id="network_rtmp_st<?=$i?>_publish_enable" />
-										<span>enablepublish</span>
+										<span>Enable publish</span>
 									</label>
-									<div class="form-inline mt-1 ml-4">
-										<span class="col-md-2">type</span>
+									<div id="pub_<?=$i?>_type" class="form-inline mt-1 ml-4" hidden>
+										<span class="col-md-2">Type</span>
 										<label class="form-check mr-2">
 											<input type="radio" name="network_rtmp_st<?=$i?>_publish_type" id="network_rtmp_st<?=$i?>_publish_type_live" value="live" class="form-check-input"/>
-											<span>live</span>
+											<span>Live</span>
 										</label>
 										<label class="form-check mr-2">
 											<input type="radio" name="network_rtmp_st<?=$i?>_publish_type" id="network_rtmp_st<?=$i?>_publish_type_record" value="record" class="form-check-input"/>
-											<span>record</span>
+											<span>Record</span>
 										</label>
 										<label class="form-check">
 											<input type="radio" name="network_rtmp_st<?=$i?>_publish_type" id="network_rtmp_st<?=$i?>_publish_typeappend" value="append" class="form-check-input"/>
-											<span>append</span>
+											<span>Append</span>
 										</label>
 									</div>
-									<div class="form-inline mt-1 ml-4">
-										<span class="col-md-2">bufferlength</span>
+									<div id="pub_<?=$i?>_buffer_length" class="form-inline mt-1 ml-4" hidden>
+										<span class="col-md-2">Buffer length</span>
 										<input type="text" id="network_rtmp_st<?=$i?>_publish_bufferlength" class="form-control-custom mr-2" size="20" />
-										<label> (0 ... 1000000 milliseconds)</label>
+										<label> (0 ... 1000000 <span>milliseconds</span>)</label>
 									</div>
-									<div class="form-inline mt-1 ml-4">
-										<span class="col-md-2">url</span>
+									<div id="pub_<?=$i?>_url" class="form-inline mt-1 ml-4" hidden>
+										<span class="col-md-2">URL</span>
 										<input type="text" id="network_rtmp_st<?=$i?>_publish_url" class="form-control-custom" size="50" />
 									</div>
 								</div>
@@ -109,10 +110,37 @@ echo $header;
 <?=$footer?>
 <script>
 	// rtmp://<span id="hostName_st0">192.168.1.1</span>:<span id="port_st0">554</span>/<span id="name_st0"></span>/<span id="instance_st0"></span>
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+$("input[type=checkbox]").on("click", function () {
+	console.log(this, this.checked, this.id);
+	for(let i=0; i<2; i++) {
+		if(this.id == "network_rtmp_st"+i+"_publish_enable"){
+			$("#pub_"+i+"_type").prop("hidden", !this.checked);
+			$("#pub_"+i+"_buffer_length").prop("hidden", !this.checked);
+			$("#pub_"+i+"_url").prop("hidden", !this.checked);
+		}
+	}
+	// pub_<?=$i?>_url
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
 
 function loadRTMPConfig(){
 	// url = "/inc/query.php?page=rtmp";
-	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Rtmp";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Rtmp,NETWORK.Eth0.ipaddress";
 	$.getJSON(url, function(response) {
 		console.log(response);
 		if (response['NETWORK.Rtmp.enable']=='yes'){

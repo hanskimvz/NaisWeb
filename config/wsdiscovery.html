@@ -10,21 +10,21 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <span class="font-weight-bold">wsdiscovery</span></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>WS Discovery</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
 							</div>
 							<div class="card-body">
 								<lable class="form-check mb-0">
 									<input type="checkbox" id="wsDiscoveryEnable" class="form-check-input" />
-									<span>enable</span>
+									<span>Enable</span>
 								</label>
 							</div>
 							<div class="card-footer">
-								<button id="btnApply" class="btn btn-sm btn-primary"><span>apply</span></button>
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
 							</div>
 						</div>
 					</div>
@@ -36,7 +36,20 @@ echo $header;
 </body>
 <?=$footer?>
 <script>
-	function loadWSDConfig(){
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+function loadWSDConfig(){
 	// url = "/inc/query.php?page=wsdiscovery";
 	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Wsdiscovery.enable";
 	$.getJSON(url, function(response) {

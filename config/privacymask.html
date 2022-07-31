@@ -13,31 +13,15 @@ echo $header;
 				<p class="menuLocationInfo"><span>Setup</span> > <span>Video & Audio</span> > <strong>Privacy mask</strong></p>
 				<div class="container-fluid">
 					<div class="row">
-						<div class="card col-lg-6">
-							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>view</span></h6>
+						<div class="card col-lg-6 ">
+							<div class="card-body  pl-0 pr-0 pt-2 pb-0">
+								<canvas id="canvas" class="card-img-top"></canvas>
 							</div>
 							<div class="card-body"> 
-								<div id="viewToggle" class="row mt-2 justify-content-center">
-									<canvas id="canvas"></canvas>
-									<script>
-										var canvas = document.getElementById("canvas");
-										canvas.width=720;
-										canvas.height = 360;
-										var ctx = canvas.getContext('2d');
-										var img =  new Image();
-										img.src="../images/demo_screen.jpg";
-										ctx.drawImage(img, 0,0,720,360);
-
-									</script>
-									<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
-								</div>	
-								<br /><span>* Privacy mask configuration is only supported in Internet Explorer.</span>
+								<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
+								<span>* Privacy mask configuration is only supported in Internet Explorer.</span>
 							</div>
-						</div>
-					</div>
-					<div class="row mt-2">
-						<div class="card col-lg-6">
+
 							<div class="card-header mb-0">
 								<h6 class="mb-0 font-weight-bold text-primary"><span>Privacy mask zones</span></h6>
 							</div>
@@ -64,7 +48,27 @@ echo $header;
 	</div>
 	<div id="debug_console"></div>
 </body>
+
 <?=$footer?>
+<script>
+	var canvas = document.getElementById("canvas");
+	canvas.width=720;
+	canvas.height = 360;
+	var ctx = canvas.getContext('2d');
+	var img =  new Image();
+	// img.src="../images/demo_screen.jpg";
+	ctx.drawImage(img, 0,0,720,360);
+	function render(){
+		img.src="../images/demo_screen.jpg";
+		ctx.drawImage(img, 0,0,720,360);
+	}
+	function main() {
+		render();
+		requestAnimationFrame(main);
+	}
+	main();
+</script>
+
 <script>
 $("button").on("click", function () {
 	console.log(this);

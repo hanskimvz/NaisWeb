@@ -46,17 +46,17 @@ echo $header;
 									</label>
 									<div class="form-inline mb-0" id="tcpip_static_ip">
 										<span class="col-md-3  ml-4">IP address</span>
-										<input type="text" id="formTcpipStaticIP" class="form-control-custom" />
+										<input type="text" id="formTcpipStaticIP" class="form-control-custom ipv4" />
 										<button class="btn btn-micro btn-warning ml-2" id="btnIPTest"><span>test</span></button>
 										<span id="formTestBtnResult"></span>
 									</div>
 									<div class="form-inline mt-1">
 										<span class="col-md-3 ml-4">Subnet mask</span>
-										<input type="text" id="formTcpipStaticSub" class="form-control-custom" />
+										<input type="text" id="formTcpipStaticSub" class="form-control-custom ipv4" />
 									</div>
 									<div class="form-inline mt-1">
 										<span class="col-md-3 ml-4">Gateway address</span>
-										<input type="text" id="formTcpipStaticGate" class="form-control-custom" />
+										<input type="text" id="formTcpipStaticGate" class="form-control-custom ipv4" />
 									</div>
 								</div>
 
@@ -121,11 +121,11 @@ echo $header;
 								<div class="form-group mb-0">
 									<div class="form-inline">
 										<span class="col-md-3">Primary DNS server</span>
-										<input type="text" id="formTcpipPriDNS" class="form-control-custom" />
+										<input type="text" id="formTcpipPriDNS" class="form-control-custom ipv4" />
 									</div>
 									<div class="form-inline mt-1">
 										<span class="col-md-3">Secondary DNS Server</span>
-										<input type="text" id="formTcpipSecDNS" class="form-control-custom" />
+										<input type="text" id="formTcpipSecDNS" class="form-control-custom ipv4" />
 									</div>
 								</div>
 							</div>
@@ -154,13 +154,13 @@ echo $header;
 							<div class="card-body">
 								<div class="form-group mb-0">
 									<label class="form-check mb-1">
-										<input type="checkbox" id="linkLocalEnable" class="form-check-input" />
+										<input type="checkbox" id="linkLocalEnable" class="form-check-input ipv4" />
 										<span>Enable Auto-Configuration link-local address</span>
 									</label>									
 
 									<div class="form-inline">
 										<span class="col-md-3 mr-2">IP address</span>
-										<input type="text" id="formLinkLocalIP" class="form-control-custom" />
+										<input type="text" id="formLinkLocalIP" class="form-control-custom ipv4" />
 									</div>
 									<div class="form-inline mt-1">
 										<span class="col-md-3 mr-2">Subnet mask</span>
@@ -180,6 +180,7 @@ echo $header;
 	<div id='debug_console'></div>
 </body>
 <?=$footer?>
+
 <!-- <script src="/js/config/tcpip.js"></script> -->
 <script>
 $("button").on("click", function () {
@@ -251,6 +252,7 @@ function loadTCPIPConfig(){
 	});
 }
 loadTCPIPConfig();
+
 
 </script>
 

@@ -68,10 +68,11 @@
 
     "VCA license":              "사용 설정",
     "Zones & Rules":            "영역 & 규칙",
-    "Calibration":              "입체 보정",
+    "3D Calibration":           "입체 보정",
     "Classification":           "물체 분류",
     "Tamper":                   "임의조작 감지",
-    "Schene Change":            "화면 변경",
+    "Scene Change":             "화면 변경",
+    "Scene Maintenance":        "화면 관리",
     "PTZ Tracking":             "PTZ 추적기능",
     "Burnt in Annotation":      "확장 OSD",
     "Counting Report":          "카운팅 리포트",
@@ -158,15 +159,16 @@
     "Current Camera Time":      "장비 현재 시간",
     "Configuration":            "설정",
     "Time zone":                "표준 시간대",
+    "Go to NTP configuration":  "NTP 서버 설정 바로가기",
     "Sync source":              "시간 동기",
     "Date & Time format":       "날짜&시간 표시",
     "Predefined":               "형식",
     "24-hour":                  "24시간 표기",
     "New Camera Time":          "새로운 시간 설정",
     "Source":                   "소스 선택",
-    "Set this computer's Date & Time": "이 컴퓨터의 시간으로 설정",
+    "Set this computer's Datetime": "이 컴퓨터의 시간으로 설정",
     "Set with NTP server":      "NTP 시간으로 설정",
-    "NTP server":               "인터세 시간 서버",
+    "NTP server":               "인터넷 시간 서버",
     "Set manually":             "수동 설정",
     "Date":                     "날짜",
     "Time":                     "시간",
@@ -447,420 +449,588 @@
     // Mulitcast Notification
     "Multicast Notification": "멀티캐스트 통지",
 
+    // HTTP
+    "Web Server": "웹 서버",
+    "TCP/IP port number of HTTP":   "HTTP 포트 번호",
+    "TCP/IP port number of HTTPS":  "HTTPS 포트 번호",
+    "Authentication Type":          "인증방식",
+    "Certificate Create & Install":             "인증서 생성 및 설치",
+    "Create & install self-signed certificate": "자체 서명 인증서 생성 및 설치",
+    "Self-signed certificate":                  "자체 서명 인증서 설치",
+    "Create":                                   "생성",
+    "Create certificate signing request":       "인증 요청서 생성",
+    "Create request":                           "생성 요청",
+    "Select certificate file":                  "인증서 파일 선택",
+    "Created Certificate Request":              "생성된 요청서",
+    "No certificate request created.":          "생성된 인증서 요청이 없습니다.",
+    "Properties":                               "속성",
+    "Installed Certificate":                    "설치된 인증서",
+    "Certificate successfully configured.":     "설정된 인증서가 없습니다.",
+    "Country code":                             "국가코드",
+    "State or province":                        "시,도",
+    "Locality":                                 "도시명",
+    "Organization":                             "회사(기관)명",
+    "Organizational Unit":                      "조직(부서)명",
+    "Common Name":                              "사용자 또는 서버 이름",
+    "Validity":                                 "유효기간",
+    "Created Request Certificate":              "생성된 요청서",
 
+    // NTP
+    "NTP(SNTP)":        "NTP(SNTP)",
+    "NTP Server list":  "NTP 서버 목록",
+    "NTP Server 1":     "NTP 서버 1",
+    "NTP Server 2":     "NTP 서버 2",
+    "NTP Server 3":     "NTP 서버 3",
+    "NTP Server 4":     "NTP 서버 4",
 
-    "tcpnotificationlist": "TCP Notification list",
-    "tcpnotificationinfo":"TCP Notification Info",
+    //  UPnP
+
+    // RTP/RTSP
+    "Global":                        "일반",
+    "RTSP configuration":           "RTSP 설정",
+    "Enable RTSP Authentication":   "RTSP 인증 사용 ",
+    "SRTP":                         "SRTP",
+    "Enable SRTP":                  "SRTP 실행",
+    "Protection profile":           "암호화 프로파일",
+    "Master key":                   "마스터 키",
+    "Salt key":                     "솔트 키",
+    "Key Generation":               "인증 키 생성" ,
+    "Unicast":                      "유니캐스트",
+    "Enable Unicast stream":        "유니캐스트 스트림 실행 ",
+    "Session":                      "세션",
+    "Enable audio stream":          "오디오 스트림 사용 ",
+    "Enable metadata":              "메타데이터 사용",
+    "Enable ONVIF metadata":        "ONVIF 메타데이터 사용 ",
+    "Enable QoS DSCP":              "QoS DSCP 사용",
+    "Video DSCP":                   "비디오 DSCP",
+    "Audio DSCP":                   "오디오 DSCP",
+    "Meta DSCP":                    "메타 DSCP",
+    "ONVIF Meta DSCP":              "ONVIF 메타 DSCP",
+    "Enable Multicast stream":      "멀티캐스트 스트림 실행 ",
+    "Enable always multicast":      "멀티캐스트 상시 전송",
+    "Video IP address":             "비디오 IP 주소",
+    "Video port":                   "비디오 포트",
+    "Audio IP address":             "오디오 IP 주소",
+    "Audio port":                   "오디오 포트",
+    "Meta IP address":              "메타 IP 주소",
+    "Meta port":                    "메타데이터 포트",
+    "ONVIF Meta IP address":        "ONVIF 메타 IP 주소",
+    "ONVIF Meta port":              "ONVIF 메타 포트",
+    "(Enter 0.0.0.0 for automatic configuration)": "(0.0.0.0을 입력하면 자동으로 설정)",
+
+    // RTMP
+    "Enabel RTMP":      "RTMP실행",
+    "Chunk size":       "청크 사이즈",
+    "Instance":         "인스턴스",
+    "Enable publish":   "퍼브리싱 사용",
+    "Type":             "형식",
+    "Record":           "녹화",
+    "Append":           "후속배치",
+    "Buffer length":    "버퍼크기",
+    "milliseconds":      "밀리초",
+
+    //  mDNS
+
+    // WS Discovery
+
+    // SMTP
+    "SMTP (E-Mail)":        "SMTP (E-Mail)",
+    "Email Sender":         "메일 발신자",
+    "Sender's name":        "발신자 이름",
+    "From email address":   "발신자 이메일 주소",
+    "Mail server address":  "보내는 메일서버 주소",
+    "Mail server port":     "보내는 메일서버 포트",
+    "Enable encrypted connection (SSL)":"암호화된 연결 (SSL) 필요 ",
+    "Use authentication to log in this server":"메일서버 인증 필요",
+    "Send test mail to":    "테스트 이메일 주소",
+
+    // DDNS
+    "Enable DDNS":          "DDNS 실행",
+    "DDNS Service Provider":"DDNS서비스 공급자",
+    "Service Provider":     "서비스 공급자",
+    "DDNS Setting":         "DDNS 설정",
+    "Domain name":          "도메인 이름",
+    "Update time":          "업데이트 시간",
+    "day(s)":               "일",
+    "Format: domain_name,hash_code":"형식은 도메인 이름, 해시코드",
+    "For hash code, refer to": "해시코드는 다음 링크를 참조",
     
-    
+    // SNMP
+    "SNMP Version":         "SNMP 버전",
+    "SNMP Description":     "SNMP 설명",
+    "Location":             "시스템 위치",
+    "Contact":              "연락처",
+    "VACM Setting":         "VACM 설정",
+    "Read Community":       "커뮤니티 접근",
+    "User":                 "사용자",
+    "Auth":                 "인증",
+    "Priv":                 "프라이버시",
+    "Authentication Protocol":"인증 프로토콜",
+    "Privacy Protocol":     "프라이버시 프로토콜",
+    "Trap Setting":         "Trap 설정",
+    "Trap Ver1.0":          "Trap 버전1.0",
+    "Address":              "주소",
+    "Community":            "커뮤니티",
+    "Trap Ver2.0":          "Trap 버전2.0 ",
+
+    // Wireless lan
+    "Wireless AP List":     "무선 인터넷 목록",
+    "Choose a wireless network": "무선인터넷을 고르십시오.",
+    "ESSID":                "ESSID",
+    "Encryption":           "보안",
+    "Authentication":       "인증",
+    "Network key":          "네트워크 키",
+    "Refresh Network List": "무선인터넷 갱신",
+    "Wireless network IP configuration":"무선 인터넷 IP 설정",
+
+    // IP filtering
+    "Always allow ping request":"Ping을 항상 허용",
+    "Allow admin IP":       "관리자 IP",
+    "Filtering policy":     "필터링 모드",
+    "Allow":                "허용",
+    "Deny":                 "거부",
+    "Filtered IP Addresses":"필터링할 IP",
+    "Filtered IP address setup":"필터링된 IP 주소 설정",
+    "IP format":            "IP 형식",
+
+    // Hosted service
+    "Tunneled Link Setup Setting":"설정 수신 호스트",
+    "Server address":   "서버 IP 주소",
+    "Server port":      "서버 포트",
+    "Update interval":  "접속 주기",
    
+    // Retail cloud service, IOT service    
+    "Connection status":    "연결 상태",
+    "Connecting":           "연결 중",
+    "Failure":              "실패",
+    "Success":              "성공",
+    "Note":                 "알림",
 
+    // IEEE802.x
+    "EAP Type":             "EAP 방식",
+    "Identity":             "확인",
+    "Private key password": "개인 키 암호",
+    "Certificates":         "인증서",
+    "CA certificate":       "CA 인증서",
+    "Client certificate":   "클라이언트 인증서",
+    "Client private key":   "클라이언트 개인 키",
 
+    // SD Storage
+    "Storage list":     "저장 장치 목록",
+    "Disk size":        "디스크 크기",
+    "Disk":             "디스크",
+    "Disk type":        "디스크 유형",
+    "Total capacity":   "전체 용량",
+    "Free space":       "남은 용량",
+    "Status":           "상태",
+    "Refresh SD device list":"디스크 목록 갱신",
+    "Record device control":"저장 장치 제어",
+    "Format(vfat)":     "포맷(vfat)",
+    "Format(ext3)":     "포맷(ext3)",
+    "Mount":            "마운트",
+    "Eject":            "꺼내기",
+    "Ready":            "준비",
+    "Formatting":       "포맷 중",
+    "Unmounted":        "마운트 해제됨",
+    "Ejected":          "꺼내기 완료",
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Recording
+    "Record type":      "녹화 유형",
+    "Continuous recording":"연속 녹화",
+    "Event recording":  "이벤트 녹화",
+    "Recording Storage Options": "녹화 저장 장치 옵션",
+    "Storage device":   "저장 장치",
+    "SD card":          "SD 카드",
+    "When disk is full":"저장공간이 가득찬 경우",
+    "Stop recording":   "녹화 정지",
+    "Delete files and recycle (oldest first)":"오래된 파일 삭제 후 덮어쓰기 ",
+    "Recording setting":"녹화 설정",
+    "Prefix of filename":"파일 이름 프리픽스",
+    "Recording resource":"녹화 내용",
+    "Video only":       "비디오",
+    "Audio & Video":      "비디오&오디오",    
+    "Maximum file size/duration":"최대 파일 크기/시간",
+    "Size":             "크기",
+    "minute(s)":        "분",
+    "Stream source":    "스트림 선택",
+    "Instant Recording":"수동 녹화",
+    "VCA meta":        "영상분석 metadata",
+    "MD meta":          "움직임 감지 metadata",
+    "Recording hold off time": "녹화 지속 시간",
     
+    // Continuous, file download, video file download
 
 
+    // VCA Enable , disable
+    "VCA enable":               "VCA 사용",
+    "VCA feature":              "VCA 기능",
+    "Object tracking ":         "물체 추적",
+    "Counting line":            "카운팅 라인",
+    "People detection":         "사람 추적",
+    "Car plate recognization":  "번호판 인식",
+    "Simple pose":              "자세 검출",
+    "(Not currently licensed)": "해당 라이선스가 없습니다.",
+    "Tracking mode":            "추적 모드",
+    "surveillance":             "Surveillance",
+    "people":                   "People",
+    "Yolo5":                    "Yolo5",
+    "Open CV":                  "Open CV",
+    "Hardware code":            "하드웨어 코드",
+    "Activation code":          "인증 코드",
+    "Installed license":        "설치된 라이선스",
+    "Activate":                 "활성화 하기",
 
- 
+    // VCA Zone and Rules
+    "Restore Defaults":         "기본값 복원",
+    "Tree":                     "항목",
+    "Value":                    "값",
+    "Rule":                     "규칙",
+    "Object Class":             "물체 종류",
+    "Start time":               "시작 시간",
+    "End time":                 "종료시간",
+    "logicalrules":             "Logical rules",
 
+    // 3D Calibration
+    "Calibration status":   "조정 상태",
+    "Uncalibrated":         "조정 안됨",
+    "Calibrated side-on":   "측면으로 조정됨",
+    "Preset Setups":        "프리셋 설정",
+    "Select":               "선택",
+    "Camera setup":         "카메라 설정",
+    "Height":               "높이",
+    "meters":               "미터",
+    "Tilt angle":           "틸트 각도",
+    "degrees":              "도",
+    "Vertical FOV":         "수직 화각",
+    "Advanced parameters":  "고급 옵션",
+    "Pan angle":            "수평회전각도",
+    "Roll angle":           "수직회전각도",
+        
+    // Classification
+    "Choose an object classifier": "물체분류 목록",
+    "Detailed object classifier information" :"물체분류 정보",
+    "Min Area":     "최소 면적",
+    "Max Area":     "최대 면적",
+    "Min Speed":    "최소 속도",
+    "Max Speed":    "최대 속도",
+    "sqmt":         "평방 미터",
 
- 
+    // Tamper Detection
+    "Tamper Detection":     "임의조작 감지",
+    "Advanced Settings":    "고급 옵션",
+    "Tamper Duration until Alarm": "임의조작 지속시간",
+    "Tampered Image Area":  "임의조작 영상 변화율",
+    "Suppress alarm on lights on/off": "조명 켜고 끄기에 의한 오동작 방지",
+    "Suppress false alarms caused by major light changes." :"광량의 큰 변화로 인해 발생될 수 있는 잘못된 알람을 감소시킵니다.",
+    "Enabling can reduce sensitivity to genuine alarms." :"단, 감지도가 낮아질 수 있습니다.",
 
+    // Scene Change Detection
+    "Scene Change Detection":   "화면 변경 감지",
+    "Automatic":                "자동",
+    "Disabled":                 "사용안함",
+    "Changed time":             "변경 시간",
+    "Changed image area":       "변경 이미지 영역",
+    "Day/Night Mode Change Detection":"주간 및 야간 모드 전환 감지",
+    "Detect the transition between day and night mode by looking for color from/to grayscale transition between two successive frames.":
+        "프레임의 색상 유무를 감지하여 주간/야간 모드 전환을 감지 합니다.",
 
+    // Scene maintenance
+    // 현재 사용하고 있지 않은 페이지.. 향후 self_learing, NN
 
+    // PTZ AutoTracking
+    "General Configuration":    "일반 설정",
+    "Camera preset number for VCA home position": " 홈 포지션 프리셋 번호",
+    "Enable VCA only when camera at home position": "홈 포지션일 때 만 영상 분석 작동",
+    "Return to home position following manual override (user control)": "수동 조작 후 홈 포지션으로 복귀",
+    "Timeout (seconds)":    "초과시간(초)",
+    "Auto-tracking Configuration": "오토 트래킹 설정",
+    "Maximum tracking time (seconds)":  "최대 트래킹 시간(초)",
+    "Maximum hold-on time if target is lost or stationary (seconds)": "목표 물체 소실 시 유지 시간(초)",
+    "Allow manual override (user control)": "수동 조작 가능(사용자 조작)",
+    "Auto-tracking Initiation By Object Detection": "물체 감지로 오토 트래킹 개시",
+    "Any Object":   "아무 물체나",
+    "Specific Rules":   "특정 규칙에 의해",
+    "Available Rules": "가능한 규칙",
+    "Selected Rules":   "적용된 규칙",
 
-    
+    // Advanced VCA OSD (burnt in text) Burnt-in Annotation
+    "Burnt-in Annotation":          "확장 OSD",
+    "Enable Burnt-in Annotation":   "확장 OSD 사용",
+    "Zones":                        "영역",
+    "Display zones":                "영역 표시 ",
+    "Objects":                      "물체",
+    "Display objects":              "물체 표시",
+    "Non-alarmed objects":          "미 검지된 물체",
+    "Object speed":                 "물체 속도",
+    "Object height":                "물체 높이",
+    "Object area":                  "물체 면적",
+    "Object classification":        "물체 분류",
+    "Text size":                    "글자 크기",
+    "Small":                        "작게",
+    "Large":                        "크게",
+    "Display objects in tow colors":"두가지 색으로 물체 표시",
+    "Alarm object color":           "검지된 물체 색깔",
+    "Non-alarm object color":       "미 검지된 물체 색깔",
+    "Display objects in multiple colors":"여러 색깔로 물체 표시",
+    "Green":                        "녹색",
+    "Yellow":                       "노란색",
+    "Magenta":                      "자홍색",
+    "Cyan":                         "청록색",
+    "Orange":                       "오렌지색",
+    "Counters":                     "카운터",
+    "Display counters":             "카운터 표시",
+    "System messages":              "시스템 메시지",
+    "Display messages":             "메시지 표시",
+    "Display current profile":      "현재 프로파일 표시",
+    "Diagnostics":                  "진단",
+    "Display counting line events": "카운팅 라인 이벤트 표시 ",
 
+    // Counting report
+    "Reporting Service":        "리포팅 서비스",
+    "Database Service":         "데이터베이스 서비스",
+    "Email Notification":       "이메일 통지",
+    "Push Service":             "메시지 통지",
+    "Predefined Request":       "이미 설정된 요청",
+    "Request Command":          "요청 명령어",
+    "Counter ID":               "카운터 번호 ",
+    "Table(Sampling)":          "테이블(샘플링)",
+    "Sorting order":            "정렬 방식",
+    "Value type":               "값 형식",
+    "Request":                  "요청",
+    "Table":                    "테이블",
+    "Bar":                      "바 그래프",
+    "CSV":                      "CSV",
+    "Request URI":              "URI 요청",
+    "DB Service is disabled.":  "데이터베이스 서비스가 설정 되어 있지 않습니다.",
+    "Enable Database service":  "데이터베이스 서비스 사용",
+    "DB Storage":               "데이터베이스 저장장치",
+    "Total DB Size":            "총 DB 사이즈",
+    "Storage Information":      "저장장치 정보",
+    "Tables":                   "테이블",
+    "Enable Table0":             "테이블0 사용",
+    "Enable Table1":             "테이블1 사용",
+    "Enable Table2":             "테이블2 사용",
+    "Enable Table3":             "테이블3 사용",
+    "Sampling interval":        "샘플링 간격",
+    "Roll-over Count":          "자료 개수",
+    "Roll-over Time":           "최대 카운트 시간",
+    "Database Management":      "데이터베이스 관리",
+    "Clear":                    "지우기",
+    "Backup":                   "백업",
+    "Restore from":             "복원",
+    "Enable email notification":"이메일 통지 사용",
+    "Subject":                  "제목",
+    "Go to SMTP (E-Mail) Configuration": "이메일 서버(SMTP) 설정으로 가기",
+    "Email Configuration":      "이메일 설정",
+    "Schedule Configuration":   "스케쥴 설정",
+    "Current Device Time":      "장비 현재 시간",
+    "Enable Hourly Report":     "시간(매시) 보고",
+    "Enable Daily Report":      "일간 보고",
+    "Enable Weekly Report":     "주간 보고",
+    "Enable Monthly Report":    "월간 보고",
+    "Trigger Day":              "발송 일(요일)",
+    "Report all data":          "모든 데이터 보고",
+    "Table 0":                  "테이블 0",
+    "Table 1":                  "테이블 1",
+    "Table 2":                  "테이블 2",
+    "Table 3":                  "테이블 3",
+    "Descending":               "내림차순",
+    "Ascending":                "오름차순",
+    "Absolute":                 "절대값",
+    "Difference":               "차이값",
+    "Format":                   "형식",
+    "CSV(Attachment)":          "CSV(첨부파일)",
+    "CSV(Plain Text)":          "CSV(일반 텍스트)",
+    "Enable Push Service":      "메시지 통보 서비스 사용하기",
+    "Protocol Type":            "프로토콜 유형",
+    "Server IP":                "서버 IP",
+    "Report Interval(sec)":     "리포트 간격(초)",
+    "Heartbeat Interval(sec)":  "하트비트 간격(초)",
 
+    // Heatmap report:
+    "Enable Heatmap Serivce":   "히트맵 서비스 사용하기",
+    "Output color image":       "컬러 이미지 사용",
+    "Annotate heatmap on snapshot":"히트맵을 스샵샷 위에 오버레이",
+    "Heatmap image size":       "히트맵 이미지 크기",
+    "Heatmap service is disabled.": "히트맵 서비스가 활성화 되지 않았습니다.",
 
-    
+    // Advanced
+    "Alarm Holdoff Time":       "경보 무시 시간",
+    "Threshold":                "경계값",
+    "Measurement Units":        "측정 단위",
+    "Height/Area/Speed units":  "높이/면적/속도 단위",
+    "Metric":                   "미터법",
+    "Imperial":                 "영국표준법",
+    "Metadata format":          "메타데이터 포맷",
+    "Metadata":                 "메타데이터",
+    "Event":                    "이벤트",
+    "Object":                   "물체",
+    "Counting":                 "카운팅",
+    "Do not send empty metadata packets (metadata won't be sent if no information generated)":
+        "정보가 없는 데이터 전송하지 않음",
+    "Diagnostic Metadata":      "디버깅 메타데이터",
+    "Blob":                     "Blob",
+    "Stationary Object Hold-on Time":"정지된 물체 추적 최대 시간",
+    "Tracking Options":         "추적 설정",
+    "Minimum tracked object size":"추적 물체 최소크기",
+    "blobmap pixels":           "Blob 개수",
+    "Display Options":          "표시 옵션",
+    "Minimum alarm object display time":"경보 물체 표시 최소시간",
+    "Minimum object display time":"물체 표시 최소시간",
+    "Detection Point of Tracked Objects":"물체 추적의 측정 포인트",
+    "Default (choose centroid if calibrated overhead, midbottom if calibrated sideon or uncalibrated)":
+        "기본 (머리위로 측정되면 중앙 선택, 측면 측정되거나 측정되지 않으면 중하단 선택)",
+    "Centroid (force centroid)":"중앙 (강제로 중앙 측정)",
+    "Midbottom (force midbottom)":"중하단 (강제로 중하단 측정)",
+    "Global Restore Defaults":  "전체 기본값으로 복구",
+    "Restore all default VCA settings":"모든 VCA 설정을 기본값으로 복구",
+     
+    // VCA conf. import export
+    "Import/Export":            "백업/복구",
+    "VCA Configuration Export": "VCA 설정 백업",
+    "VCA Configuration Import": "VCA 설정 복구",
+    "Start export":             "백업 시작",
+    "Start import":             "복구 시작",
+    "Import from":              "파일 선택",
+    "BIA":                      "확장 OSD",
 
-
-
-    
-    "webserver":        "Web Server",
-    "https":            "HTTPS",
-    "tcpporthttp":      "TCP/IP port number of HTTP",
-    "tcpporthttps":      "TCP/IP port number of HTTPS",
-    "authenticationtype":"Authentication Type",
-
-
-    
-    "ntp_sntp":         "NTP(SNTP)",
-    "ntpserverlist":    "NTP Server list",
-    "ntpserver1":       "NTP Server 1",
-    "ntpserver2":       "NTP Server 2",
-    "ntpserver3":       "NTP Server 3",
-    "ntpserver4":       "NTP Server 4",
-
-    
-
-    
-    "common":           "Common",
-    
-    
-    "rtspconf":         "RTSP configuration",
-  
-    "enablertspauth":   "Enable RTSP Authentication",
-    "srtp":             "SRTP",
-    "protectprofile":   "Protection profile",
-    "masterkey":        "Master key",
-    "saltkey":          "Salt key",
-    "keygeneration":    "Key Generation",
-    "unicast":          "Unicast",
-    "enablestream":     "Enable Stream",
-    "session":          "Session",
-    
-    "enableaudiostream":"Enable audio stream",
-    "enablemetadata":   "Enable metadata",
-    "enableonvifmeta":  "Enable ONVIF metadata",
-    "enableqosdscp":    "Enable QoS DSCP",
-    "videodscp":        "Video DSCP",
-    "audiodscp":        "Audio DSCP",
-    "metadscp":         "Meta DSCP",
-    "onvifmetadscp":    "ONVIF Meta DSCP",
-    "enablealwaysmulticast": "Enable always multicast",
-    "videoipaddr":      "Video IP address",
-    "videoport":        "Video port",
-    "audioipaddr":      "Audio IP address",
-    "audioport":        "Audio port",
-    "metaipaddr":       "Meta IP address",
-    "metaport":         "Meta port",
-    "onvifmetaipaddr":  "ONVIF Meta IP address",
-    "onvifmetaport":    "ONVIF Meta port",
-    "ttl":              "TTL",
-    "desc_multi_autoconf":  "(Enter 0.0.0.0 for automatic configuration)",
-
-    
-    "chunksize":        "Chunk size",
-    "instance":         "Instance",
-    "url":              "URL",
-    "stream_0":         "First stream",
-    "stream_1":         "Second stream",
-    "enablepublish":    "Enable publish",
-    "type":             "Type",
-    "record":           "Record",
-    "append":           "Append",
-    "bufferlength":     "Buffer length",
-
-    
-
-    
-
-    
-    "smtp_email":       "SMTP (E-Mail)",
-    "emailsender":      "Email Sender",
-    "sendersname":      "Sender's name",
-    "fromemailaddr":    "From email address",
-    "mailserveraddr":   "Mail server address",
-    "mailserverport":   "Mail server port",
-    "enablessl":        "Enable encrypted connection (SSL)",
-    "useloginthisserver":"Use authentication to log in this server",
-    "sendmailto":       "Send test mail to",
-
-    
-    "enableddns":       "Enable DDNS",
-    "ddnsserviceprovider":  "DDNS Service Provider",
-    "serviceprovider":  "Service Provider",
-    "ddnssetting":      "DDNS Setting",
-    "domainname":       "Domain name",
-    "updatetime":       "Update time",
-    "ddns_desc1":       "Format: domain_name,hash_code",
-
-    
-    "snmpversion":      "SNMP Version",
-    "snmpdescription":  "SNMP Description",
-    "location":         "Location",
-    "contact":          "Contact",
-    "vacmsetting":      "VACM Setting",
-    "readcommunity":    "Read Community",
-    "user":             "User",
-    "auth":             "Auth",
-    "priv":             "Priv",
-    "authenticationprotocol": "Authentication Protocol",
-    "privprotocol":     "Privilege Protocol",
-    "trapsetting":      "Trap Setting",
-    "trapver1.0":       "Trap Ver1.0",
-    "address":          "Address",
-    "community":        "Community",
-    "trapver2.0":       "Trap Ver2.0",
-
-    
-    "wirelessaplist":   "Wireless AP List",
-    "choosewirelessnetwork":"Choose a wireless network",
-    "essid":            "ESSID",
-
-    "macaddr":          "Mac address",
-    
-    "encryption":       "Encryption",
-    "authentication":   "Authentication",
-    "networkkey":       "Network key",
-    "refreshnetworklist":"Refresh Network List",
-    "wirelessnetworkipconf": "Wireless network IP configuration",
-
-
-    
-    "alwaysallowpingrequest": "Always allow ping request",
-    "allowadminip": "Allow admin IP",
-    "policy":           "Policy",
-    "allow":            "Allow",
-    "deny":             "Deny",
-    "filteredipaddr":   "Filtered IP Addresses",
-    "filteredipaddrsetup":"Filtered IP Address Setup",
-    "ipformat":         "IP format",
-
-
-    
-    "tlss":             "Tunneled Link Setup Setting",
-    "serveraddr":       "Server address",
-    "serverport":       "Server port",
-    "updateinterval":   "Update interval",
-
-    
-    
-    "connectionstatus": "Connection status",
-    "connecting":       "Connecting",
-    "failure":          "Failure",
-    "success":          "Success",
-    "note":             "Note",
-
-    
-    "eaptype":          "EAP Type",
-    "identity":         "Identity",
-    "privatekeypassword": "Private key password",
-    "certificates":     "Certificates",
-    "cacertificate":    "CA certificate",
-    "selectcertifile":  "Select certificate file",
-    "clientcertificate":"Client certificate",
-    "clientprivatekey": "Client private key",
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-    
-
-    
-    "english":          "English",
-    "korean":           "한국어",
-    "chinese":          "中文",
-
-    
-
-
-    
-    
-
-
-
-
-
-    
-    
-
-    
-
-    
-    
-    
- 
-
-    
-    "storagelist":      "Storage list",
-    "disksize":         "Disk size",
-    "disk":             "Disk",
-    "totalcapacity":    "Total capacity",
-    "freespace":        "Free space",
-    "status":           "Status",
-    "refreshsddevicelist": "Refresh SD dvice list",
-    "recorddevicecontrol": "Record device control",
-    "foramtvfat":       "Format(vfat)",
-    "formatext3":       "Format(ext3)",
-    "mount":            "Mount",
-    "eject":            "Eject",
-    "ready":            "Ready",
-    "formatting":       "Formatting",
-    "unmounted":        "Unmounted",
-    "ejected":          "Ejected",
-
-    
-
-    
-    "recordtype":       "Recording type",
-    "continuous":       "Continuous",
-    "event":            "Event",
-    "size":             "Size",
-    "recordingsetting": "Recording setting",
-    "maxfilesizeduration":"Maximum file size/duration",
-    "streamsource":     "Stream source",
-    
-    "recordstorageoption":"Recording Storage Options",
-    "storagedevice":   "Storage device",
-    "recordingresource":"Recording resource",
-    "recordingholdofftime":"Recording hold off time",
-    "vcameta":          "VCAmeata",
-    "mdmeta":           "MDmeta",
-    "overwritingrecords":"Delete files and recycle (oldest first)",
-    "videoonly":        "Video only",
-    "audiovideo":       "Audio+Video",
-
-    "sensoralarm":      "Sensor/Alarm",
-    "sensordi":         "Sensor (DI)",
-    "alarmdo":          "Alarm (DO)",
-    "resourcetype":     "Resource type",
-    "relay":            "Relay",
-    "voltage5v":        "Voltage (max. 5V)",
-    "triggertype":      "Trigger type",
-    "normalopen":       "Normally open",
-    "normalclose":      "Normally close",
-    "detectiontype":    "Detection type",
-    "edgetrigger":      "Edge trigger",
-    "leveltrigger":     "Level trigger",
-    "intervaltrigger":  "Interval between triggers",
-    "duration":         "Duration",
-    "alarmcontrol":     "Alarm (DO) Control",
+    // Sensor Alarm
+    "Sensor/Alarm":     "감지기/경보기",
+    "Sensor (DI)":      "감지기(센서)",
+    "Alarm (DO)":       "경보기(알람)",
+    "Resource type":    "감지형식",
+    "Relay":            "릴레이",
+    "Voltage (max. 5V)":"전압(최대5V)",
+    "Trigger type":     "입력 유형",
+    "Normally open":    "상시 오픈",
+    "Normally close":   "상시 단락",
+    "Detection type":   "감지 방식",
+    "Edge trigger":     "엣지 트리거",
+    "Level trigger":    "레벨 트리거",
+    "Interval between triggers": "센서 재발생 시 무시할 시간",
+    "(0: trigger for every detection)": "(0:은 모든 센서 발생을 처리함)",
+    "Duration":         "유지시간",
+    "Alarm (DO) Control":"알람(DO) 제어",
     "trigger":          "Trigger",
-    "active":           "Active",
-    "inactive":         "Inactive",
+    "Active":           "활성",
+    "Inactive":         "비활성",
+
+    // Serial port UART
+    "Serial port":      "시리얼 포트(직렬통신)",
+    "Baudrate":         "전송속도(보레이트)",
+    "Data":             "데이터",
+    "Parity":           "패리티",
+    "Stop bit":         "정지비트",
+    "Flow control":     "흐름제어",
+    "Serial over IP":   "Serial over IP",
+    "TCP client":       "TCP 클라이언트",
+    "Even":             "짝",
+    "Odd":              "홀",
+    "(0:unlimited, 1~9999 seconds)": "(0:연속, 1~9999 초)",
+
+    // Heater
+    "Celsius":      "섭씨",
+    "Fahrenheit":   "화씨",
+    "Duty cycle":   "듀티사이클",
+    
+    // PTZ
+    "Auto flip":    "자동 화면 전환",
+    "Digital zoom": "디지털 줌",
+
+    // Touring 
+    "Touring list":     "투어링 목록",
+    "Preset number":    "프리셋 번호",
+    "Speed":            "속도",
+    "Touring number":   "투어링 번호",
+    "Up":               "위로",
+    "Down":             "아래로",
+    "PTZ control":      "PTZ 제어",
+    "Zoom":             "확대축소",
+    "Focus":            "초점",
+    "Pre-position":     "예약 위치",
+    "Set":              "설정",
+    "Go":               "가기",
+
+    //  Auto run
+    "Enable auto run":  "자동순찰(오토런) 실행 하기",
+    "After":            "다음 시간 후에",
+    "min(s)":           "분",
+    "Go to home position": "홈 위치로 가기",
+    "Start tour":       "투어 시작하기",
+    "Go to preset":     "프리셋으로 가기",
+    "Panning":          "수평 회전",
+    "Angle":            "각도",
+
+    // Protocol
+    "Protocol list":    "통신 규약 목록",
+    "Uart port":        "직렬 포트",
+    "PTZ protocol":     "PTZ 프로토콜",
+    "PTZ address":      "PTZ 주소",
+    "The serial port mode is SerialOverIP.": "직렬 포트가 Serial over IP 모드로 설정 되어 있습니다.",
+    "Go to Serial Port Menu and select PTZ mode to use PTZ control.": "시리얼 포트 메뉴로 가서 PTZ모드로 선택하십시오.",
+
+    // Preset schedule
+    "(HH:MM 24-Hour)":  "(HH:MM 24시간)",
+
+    // API
+    "Enable Genetec":   "Genetec API 사용하기",
+    "Enable ONVIF":     "ONVIF 사용하기",
+    "Enable authentication":    "인증 사용하기",
+    "Enable replay attack protection": "재생 공격(Replay attack) 방어 실행 ",
+    "Enable profile G": "프로파일 G 사용 ",
+
+    // Language
+    "English":          "English",
+    "한국어":           "한국어",
+    "中文":             "中文",
+
+    // Firmware update
+    "Upload Firmware Image":"펌웨어 업그레이드",
+    "Installed firmware":   "설치된 펌웨어",
+    "Select firmware image file":"펌웨어 이미지 파일을 선택하세요.",
+    "WARNING: Not enough memory. Please reboot the camera.": "경고: 메모리 부족. 장비를 다시 시작하세요.",
+
+    // system log
+    "Download log":         "로그 내려받기",
+    "Download system log":  "시스템 로그 내려받기",
+    "Download event log":   "이벤트 로그 내려받기",
+    "FTP Log Backup Mode":  "FTP 로그 백업 모드",
+    "Enable auto backup":   "자동 백업 사용",
+    "FTP Log Backup Configuration": "FTP 로그 백업 설정",
+    "Show notification list":"통지 목록 보기",
+    "Go to FTP Notification":"FTP 통지 설정 페이지로 바로 가기",
+    "Load notification into setting": "설정에 통지를 적용",
+
+    // configuration import / export  
+    "Configuration import/export"  : "설정 백업/복구",
+    "Configuration export": "설정 백업",
+    "Configuration import": "설정 복구",
+    "Export":               "백업",
+    "Import":               "복구",
+
+    // reset all settings
+    "Reset all configuration settings, but": "다음 항목은 초기화 됮 않습니다.",
+    "Preserve network settings":    "네트워크 설정",
+    "Preserve user account information": "사용자 계정",
+    "Preserve timezone setting": "표준시간대 설정",
+
+    // restart device, reboot
+    
+    // Third manager
+    "Stop/Start":       "정지/시작",
+    "Restart":          "다시시작",
+    "Update":           "업데이트",
+    "Uninstall":        "제거",
+
+    // Information
+
+
+    // OEM
+    "Logo images":  "로고 이미지 파일"
+    
+
 
     
-    "serialport":       "Serial port",
-    "baudrate":         "Baudrate",
-    "data":             "Data",
-    "parity":           "Parity",
-    "flowcontrol":      "Flow control",
-    "serialoverip":     "Serial over IP",
-    "udp":              "UDP",
-    "tcpclient":        "TCP client",
-    
-    "even":             "Even",
-    "odd":              "Odd",
-    
-    
-    
-    "celsius":          "Celsius",
-    "fahrenheit":       "Fahrenheit",
-    "dutycycle":        "Dutycycle",
-    "autoflip":         "Auto flip",
-    "digitalzoom":      "Digital zoom",
-
-    
-    "touringlist":      "Touring list",
-    "presetnumber":     "Preset number",
-    "speed":            "Speed",
-    "touringnumber":    "Touring number",
-    "up":               "Up",
-    "down":             "Down",
-    "ptzcontrol":       "PTZ control",
-    "zoom":             "Zoom",
-    "focus":            "Focus",
-    "preposition":      "Pre-position",
-    "set":              "Set",
-    "clear":            "Clear",
-    "go":               "Go",
-
-    
-    "enableautorun":    "Enable auto run",
-    "after":            "After",
-    "mins":             "min(s)",
-    "gotohomeposition": "Go to home position",
-    "startthour":       "Start tour",
-    "gotopreset":       "Go to preset",
-    "panning":          "Panning",
-    "angle":            "Angle",
-
-    
-    "protocollist":     "Protocol list",
-    "uartport":         "Uart port",
-    "ptzprotocol":      "PTZ protocol",
-    "ptzaddress":       "PTZ address",
-
-    
-    
-    
-    "enablegenetec":    "Enable Genetec",
-    "enableonvif":       "Enable ONVIF",
-    "enableauthentication": "Enable authentication",
-    "enablereplayattackprotect":    "Enable replay attack protection",
-    "enableprofileg":   "Enable profile G",
-
-    
-    "uploadfirmware":   "Upload Firmware Image",
-    "installedfirmware": "Installed firmware",
-    "selectfwimagefile":"Select firmware image file",
-
-    
-    "downloadlog":      "Download log",
-    "downloadsyslog":   "Download system log",
-    "downloadeventlog": "Download event log",
-    "ftplogbackupmode": "FTP Log Backup Mode",
-    "enableautobackup": "Enable auto backup",
-    "backup":           "Backup",
-    "ftplogbackupconf": "FTP Log Backup Configuration",
-    "shownotificationlist":"Show notification list",
-    "gotoftpnotification":  "Go to FTP Notification",
-    "loadnotificationinfosetting":"Load notification into setting",
-
-    
-    "confexport":       "Configuration export",
-    "confimport":       "Configuration import",
-    "export":           "Export",
-    "import":           "Import",
-
-    
-    "resetconfsbut":    "Reset all configuration settings, but",
-    "preservenetworksetting": "Preserve network settings",
-    "preserveaccountinfo": "Preserve user account information",
-    "preservetimezonesetting":"Preserve timezone setting",
-
-    
-    
-    "stopstart":        "Stop/Start",
-    "restart":          "Restart",
-    "update":           "Update",
-    "uninstall":        "Uninstall",
-
-    
-    
-
-
-    
-    "vcaenable":        "VCA enable",
-    "vcafeature":       "VCA feature",
-    "trackingmode":     "Tracking mode",
-    "surveillance":     "Surveillance",
-    "people":           "People",
-    "hardwarecode":     "Hardware code",
-    "activationcode":   "Activation code",
-    "installedlicense": "Installed license",
-    "activate":         "Activate",
-
-    "vcazoneconfiguration":"Zone and Rules",
-    
-    "logicalrules":     "Logical rules"
 
 
 

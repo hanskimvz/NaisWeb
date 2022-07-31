@@ -10,38 +10,38 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>maintenance</span> > <strong><span>api</span></strong></p>
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>API</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group form-inline">
 									<label class="form-check">
 										<input type="checkbox" id="formApiEnable_genetec" class="form-check-input" />
-										<span>enablegenetec</span>
+										<span>Enable genetec</span>
 									</label>
 								</div>
 								<div class="form-group">
 									<label class="form-check">
 										<input type="checkbox" id="formApiEnable_onvif" class="form-check-input" />
-										<span>enableonvif</span>
+										<span>Enable ONVIF</span>
 									</label>
 									<div class="form-group ml-3">
-										<label><span>url</span>:&nbsp;<span id="onvif_url">http://192.168.1.28:80/onvif/device_service</span></label>
+										<span>URL</span>:&nbsp;<label id="onvif_url">http://192.168.1.28:80/onvif/device_service</label>
 										<label class="form-check">
 											<input type="checkbox" id="formApiEnable_authentication" class="form-check-input" />
-											<span>enableauthentication</span>
+											<span>Enable authentication</span>
 										</label>
 										<label class="form-check  ml-3">
 											<input type="checkbox" id="replayAttackProtecion" class="form-check-input" />
-											<span>enablereplayattackprotect</span>
+											<span>Enable replay attack protection</span>
 										</label>									
 										<label class="form-check">
 											<input type="checkbox" id="profileG" class="form-check-input" />
-											<span>enableprofileg</span>
+											<span>Enable profile G</span>
 										</label>
 									</div>
 								</div>
@@ -56,5 +56,37 @@ echo $header;
 		</div>
 	</div>
 <?=$footer?>
-</body>
-</html>	
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+$("input[type='radio']").on("click", function () {
+	console.log(this);
+	$("#uart_udp").prop("hidden", true);
+	$("#uart_tcpclient").prop("hidden", true);
+	$("#uart_tcpserver").prop("hidden", true);	
+	if (this.id=="formUartOverIPModeUdp") {
+		$("#uart_udp").prop("hidden", false);
+	}
+	else if (this.id=="formUartOverIPModeTcpClient") {
+		$("#uart_tcpclient").prop("hidden", false);
+	}
+	else if (this.id=="formUartOverIPModeTcpServer") {
+		$("#uart_tcpserver").prop("hidden", false);
+	}		
+
+});
+
+
+
+
+</script>
+</html>

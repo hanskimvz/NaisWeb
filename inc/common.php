@@ -18,6 +18,7 @@ EOBLOCK;
 
     $footer = <<<EOBLOCK
     <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/jquery.mask.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/language.js"></script>

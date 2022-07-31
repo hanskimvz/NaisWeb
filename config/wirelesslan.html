@@ -9,103 +9,103 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <span class="font-weight-bold">wirelesslan</span></p>
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>Wireless lan</strong></p>
 				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-6">
-						<select id="formWL_List" class="form-control" size="10"><option></option></select>				
-						</div>
-					</div>
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>wirelessaplist</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Wireless AP list</h6>
+							</div>
+							<div class="card-body pb-0">
+								<span>Choose a wireless network</span>
+								<select id="formWL_List" class="form-control" size="10"><option></option></select>				
 							</div>
 							<div class="card-body">
-								<span>choosewirelessnetwork</span>
+								
 								<div class="form-inline">
-									<span class="col-md-2">essid</span>
+									<span class="col-md-2">ESSID</span>
 									<span id="essid" class="col-md-2">-</span>
 								</div>
 								<div class="form-inline mt-1">
-									<span class="col-md-2">mode</span>
+									<span class="col-md-2">Mode</span>
 									<span id="mode" class="col-md-2">-</span>
 								</div>
 								<div class="form-inline mt-1">
-									<span class="col-md-2">macaddr</span>
+									<span class="col-md-2">MAC address</span>
 									<span id="mac" class="col-md-2">-</span>
 								</div>
 								<div class="form-inline mt-1">
-									<span class="col-md-2">bitrate</span>
+									<span class="col-md-2">Bitrate</span>
 									<span id="bitrate" class="col-md-2">-</span>
 								</div>
 								<div class="form-inline mt-1">
-									<span class="col-md-2">encryption</span>
+									<span class="col-md-2">Encryption</span>
 									<span id="enctryption" class="col-md-2">-</span>
 								</div>
 								<div class="form-inline mt-1">
-									<span class="col-md-2">authentication</span>
+									<span class="col-md-2">Authentication</span>
 									<select id="authentication" class="col-md-2 form-control-custom"><option></option></select>
 								</div>
-								<div class="form-inline mt-1">
-									<span class="col-md-2">networkkey</span>
+								<div class="form-inline mt-1 mb-0">
+									<span class="col-md-2">Network key</span>
 									<input type="text" id="network_key" class="form-control-custom col-md-4" />
 								</div>
-								<button id="btnList" class="btn btn-mini btn-warning mt-2"><span>refreshnetworklist</span></button>
-
+							</div>
+							<div class="card-footer">
+								<button id="btnList" class="btn btn-mini btn-warning mt-2">Refresh network list</button>
 							</div>
 						</div>
 					</div>
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>wirelessnetworkipconf</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Wireless network IP configuration</h6>
 							</div>
 							<div class="card-body">
 								<label class="form-check">
 									<input type="radio" name="formWL_DhcpChk" id="formWL_DhcpChk0" value="yes" class="form-check-input" />
-									<span>obtainipviadhcp</span>
+									<span>Obtain an IP address via DHCP </span>
 								</label>
 								<div class="form-group">
 									<div class="form-inline">
-										<span class="col-md-3">ipaddr</span>
+										<span class="col-md-3">IP address</span>
 										<input type="text" id="formWL_DhcpIPText" class="form-control-custom col-md-2" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">subnetmask</span>
+										<span class="col-md-3">Subnet mask</span>
 										<input type="text" id="formWL_DhcpSubnetText" class="form-control-custom col-md-2" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">gatewayaddr</span>
+										<span class="col-md-3">Gateway address</span>
 										<input type="text" id="formWL_DhcpGatewayText" class="form-control-custom col-md-2" />
 									</div>
 								</div>
 
 								<label class="form-check">
 									<input type="radio" name="formWL_DhcpChk" id="formWL_DhcpChk1" value="yes" class="form-check-input" />
-									<span>useipaddr</span>
+									<span>Use the following IP address</span>
 								</label>
-								<div class="form-group">
+								<div class="form-group mb-0">
 									<div class="form-inline">
-										<span class="col-md-3">ipaddr</span>
+										<span class="col-md-3">IP address</span>
 										<input type="text" id="formWL_StaticIPText" class="form-control-custom col-md-2 mr-2" />
 										<button id="btnIPTest" class="btn btn-mini btn-warning mr-1"><span>test</span></button>
 										<span id="formTestBtnResult"></span>
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">subnetmask</span>
+										<span class="col-md-3">Subnet mask</span>
 										<input type="text" id="formWL_StaticSubnetText" class="form-control-custom col-md-2" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">gatewayaddr</span>
+										<span class="col-md-3">Gateway address</span>
 										<input type="text" id="formWL_StaticGatewayText" class="form-control-custom col-md-2" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">primarydnsserver</span>
+										<span class="col-md-3">Primary DNS server</span>
 										<input type="text" id="formWL_StaticDns1Text" class="form-control-custom col-md-2" />
 									</div>
 									<div class="form-inline mt-1">
-										<span class="col-md-3">secondarydnsserver</span>
+										<span class="col-md-3">Secondary DNS server</span>
 										<input type="text" id="formWL_StaticDns2Text" class="form-control-custom col-md-2" />
 									</div>
 								</div>								
@@ -116,29 +116,31 @@ echo $header;
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>linklocaladdr</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Link-Local Address</h6>
 							</div>
 							<div class="card-body">
 								<label class="form-check">
 									<input type="checkbox" id="linkLocalEnable" value="yes" class="form-check-input" />
-									<span>autoconflinklocal</span>
+									<span>Enable Auto-Configuration link-local address </span>
 								</label>
-								<div class="form-group">
+								<div class="form-group mb-0">
 									<div class="form-inline">
-										<span class="col-md-2">ipaddr</span>
+										<span class="col-md-2">IP address</span>
 										<input type="text" id="formLinkLocalIP" class="form-control-custom col-md-2 mr-2" />
 									</div>
 									<div class="form-inline">
-										<span class="col-md-2">subnetmask</span>
+										<span class="col-md-2">Subnet mask</span>
 										<input type="text" id="formLinkLocalSubnet" class="form-control-custom col-md-2 mr-2" />
-										<button id="btnIPRenew" class="btn btn-mini btn-warning"><span>renew</span></button>
+										<button id="btnIPRenew" class="btn btn-mini btn-warning">Renew</button>
 									</div>
 								</div>								
 
 							</div>
 						</div>
 					</div>
-					<button id="btnApply" class="btn ttn-sm btn-primary mt-2"><span>apply</span></button>
+					<div class="col-lg-6 text-center mt-2">
+						<button id="btnApply" class="btn ttn-sm btn-primary">Apply</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -148,6 +150,12 @@ echo $header;
 </body>
 <?=$footer?>
 <script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
 
 function loadWLANConfig(){
 	// url = "/inc/query.php?page=wsdiscovery";

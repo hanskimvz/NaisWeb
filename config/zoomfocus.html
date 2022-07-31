@@ -5,6 +5,12 @@
 include ("../inc/common.php");
 echo $header;
 ?>
+<style>
+.card .card-header, .card-body {
+	padding-top: 0.5rem !important;
+	padding-bottom: 0.5rem !important;
+}
+</style>
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -54,20 +60,9 @@ echo $header;
 									<span class="col-md-3">Zoom & Focus</span>
 									<button id="btnZoomFocus" class="btn btn-mini btn-warning">Calibrate</button>
 								</div>
-								<div id="viewToggle" class="row mt-2 justify-content-center">
-									<canvas id="canvas"></canvas>
-									<script>
-										var canvas = document.getElementById("canvas");
-										canvas.width=720;
-										canvas.height = 360;
-										var ctx = canvas.getContext('2d');
-										var img =  new Image();
-										img.src="../images/demo_screen.jpg";
-										ctx.drawImage(img, 0,0,720,360);
-
-									</script>
+								<canvas id="canvas" class="card-img mt-2"></canvas>
+									
 									<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
-								</div>								
 							</div>
 						</div>
 					</div>
@@ -81,6 +76,24 @@ echo $header;
 	<div id="debug_console"></div>
 </body>
 <?=$footer?>
+<script>
+	var canvas = document.getElementById("canvas");
+	canvas.width=720;
+	canvas.height = 360;
+	var ctx = canvas.getContext('2d');
+	var img =  new Image();
+	// img.src="../images/demo_screen.jpg";
+	ctx.drawImage(img, 0,0,720,360);
+	function render(){
+		img.src="../images/demo_screen.jpg";
+		ctx.drawImage(img, 0,0,720,360);
+	}
+	function main() {
+		render();
+		requestAnimationFrame(main);
+	}
+	main();
+</script>
 <script>
 $("button").on("click", function () {
 	console.log(this);

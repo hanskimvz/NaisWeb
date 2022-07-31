@@ -9,12 +9,25 @@ echo $header;
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>storage</span> > <strong><span>download</span></strong></p>
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Storage</span> > <strong>Video file download</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-body">
+								<div id="viewToggle" class="row mt-2 justify-content-center">
+									<canvas id="canvas"></canvas>
+									<script>
+										var canvas = document.getElementById("canvas");
+										canvas.width=720;
+										canvas.height = 360;
+										var ctx = canvas.getContext('2d');
+										var img =  new Image();
+										img.src="../images/demo_screen.jpg";
+										ctx.drawImage(img, 0,0,720,360);
 
+									</script>
+									<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
+								</div>	
 							</div>
 							<div class="card-footer text-center">
 								<button id="btnPageFirst" class="btn btn-sm"><img src="../images/btn_page_first.gif" height="20" /></button>

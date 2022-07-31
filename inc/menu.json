@@ -58,22 +58,24 @@
             { "display":"SD Storage",    "id": "usbsdstorage",   "href": "usbsdstorage.html", "flag": "y" },
             { "display":"FTP Storage",      "id": "ftpstorage",     "href": "ftpstorage.html" , "flag": "y"},
             { "display":"Recording",       "id": "recording",      "href": "recording.html" , "flag": "y"},
-            { "display":"File Download",    "id": "filedownload",   "href": "filedownload.html" , "flag": "y"}
+            { "display":"File Download",    "id": "filedownload",   "href": "filedownload.html" , "flag": "n"}
         ]},
         "vcaConf":{ "display":"VCA Configuration", "flag": "y", "submenus": [
-            { "display":"VCA License",         "id": "vcaenabledisable",       "href": "vcaenabledisable.html" , "flag": "y"},
-            { "display":"Zones & Rules","id": "vcazoneconfiguration",   "href": "vcazoneconfiguration.html" , "flag": "y"},
-            { "display":"Calibration",      "id": "vcacalibration",         "href": "vcacalibration.html", "flag": "y" },
-            { "display":"Classification",      "id": "vcaclassification",         "href": "vcaclassification.html" , "flag": "y"},
-            { "display":"Tamper",           "id": "vcatamper",              "href": "vcatamper.html" , "flag": "y"},
-            { "display":"Scene Change",      "id": "vcascenechange",         "href": "vcascenechange.html", "flag": "y" },
-            { "display":"Scene Maintenance", "id": "vcascenemaintenance",    "href": "vcascenemaintenance.html", "flag": "y" },
-            { "display":"PTZ Tracking",      "id": "vcaptztracking",         "href": "vcaptztracking.html", "flag": "y" },
-            { "display":"Burnt in Annotation","id": "vcaburntinannotation",   "href": "vcaburntinannotation.html", "flag": "y" },
-            { "display":"Counting Report",    "id": "vcacounterreport",       "href": "vcacounterreport.html", "flag": "y" },
-            { "display":"Heatmap Report",    "id": "vcaheatmapreport",       "href": "vcaheatmapreport.html", "flag": "y" },
-            { "display":"Advanced",         "id": "vcaadvanced",            "href": "vcaadvanced.html", "flag": "y" },
-            { "display":"VCA Conf. Import Export",         "id": "vcaloadsave",            "href": "vcaloadsave.html" , "flag": "y"}
+            { "display":"VCA License",              "id": "vcaenabledisable",       "href": "vcaenabledisable.html" , "flag": "y"},
+            { "display":"Zones & Rules",            "id": "vcazoneconfiguration",   "href": "vcazoneconfiguration.html" , "flag": "y"},
+            { "display":"3D Calibration",              "id": "vcacalibration",         "href": "vcacalibration.html", "flag": "y" },
+            { "display":"Classification",        "id": "vcaclassification",      "href": "vcaclassification.html" , "flag": "y"},
+            { "display":"Tamper",                   "id": "vcatamper",              "href": "vcatamper.html" , "flag": "y"},
+            { "display":"Scene Change",             "id": "vcascenechange",         "href": "vcascenechange.html", "flag": "y" },
+            { "display":"Scene Maintenance",        "id": "vcascenemaintenance",    "href": "vcascenemaintenance.html", "flag": "y" },
+            { "display":"PTZ Tracking",             "id": "vcaptztracking",         "href": "vcaptztracking.html", "flag": "y" },
+            { "display":"Burnt in Annotation",      "id": "vcaburntinannotation",   "href": "vcaburntinannotation.html", "flag": "y" },
+            { "display":"Counting Report",          "id": "vcacounterreport",       "href": "vcacounterreport.html", "flag": "y" },
+            { "display":"Heatmap Report",           "id": "vcaheatmapreport",       "href": "vcaheatmapreport.html", "flag": "y" },
+            { "display":"Event Report",             "id": "vcaeventreport",         "href": "vcametadb_events.html", "flag": "n" },
+            { "display":"Track Report",             "id": "vcatracksreport",         "href": "vcametadb_tracks.html", "flag": "n" },
+            { "display":"Advanced",                 "id": "vcaadvanced",            "href": "vcaadvanced.html", "flag": "y" },
+            { "display":"VCA Conf. Import Export",  "id": "vcaloadsave",            "href": "vcaloadsave.html" , "flag": "y"}
         ]},
         "peripherial": { "display":"Peripherial", "flag": "y", "submenus": [
             { "display":"DI / DO",    "id": "dido",   "href": "dido.html" , "flag": "y"},
@@ -95,7 +97,7 @@
             { "display":"Firmware Upgrade", "id": "firmwareupgrade",    "href": "firmwareupgrade.html", "flag": "y" },
             { "display":"System Log",       "id": "systemlog",          "href": "systemlog.html", "flag": "y" },
             { "display":"Conf. Import Export","id": "confimportexport",   "href": "confimportexport.html", "flag": "y" },
-            { "display":"Reset All Setting", "id": "resetallsetting",    "href": "resetallsetting.html", "flag": "y" },
+            { "display":"Reset All Settings", "id": "resetallsetting",    "href": "resetallsetting.html", "flag": "y" },
             { "display":"Reboot",          "id": "reboot",             "href": "reboot.html" , "flag": "y"},
             { "display":"Third Manager",       "id": "thirdmngr",          "href": "thirdmngr.html" , "flag": "y"}    
         ]},

@@ -4,32 +4,31 @@
 <?php
 include ("../inc/common.php");
 echo $header;
-
 ?>
 
 <body>
     <div id="wrapper">
 		<div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<p class="menuLocationInfo"><span>setup</span> > <span>networkconf</span> > <span class="font-weight-bold">ipfiltering</span></p>
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Network Configuration</span> > <strong>IP Filtering</strong></p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>configuration</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
 									<label class="form-check">
 										<input type="checkbox" id="IPFilteringEnable" class="form-check-input" />
-										<span>enable</span>
+										<span>Enable</span>
 									</label>
 									<label class="form-check">
 										<input type="checkbox" id="AlwaysAllowPing" class="form-check-input" />
-										<span>alwaysallowpingrequest</span>
+										<span>Always allow ping request </span>
 									</label>
 									<div class="form-inline">
-										<span class="col-md-3">allowadminip</span>
+										<span class="col-md-3">Allow admin IP</span>
 										<input type="text" id="formAllowadminIP" class="form-control-custom" size="20"/>
 									</div>
 								</div>
@@ -39,29 +38,31 @@ echo $header;
 					<div class="row mt-2">
 						<div class="card col-lg-6">
 							<div class="card-header mb-0">
-								<h6 class="mb-0 font-weight-bold text-primary"><span>policy</span></h6>
+								<h6 class="mb-0 font-weight-bold text-primary">Filtering policy</h6>
 							</div>
 							<div class="card-body">
 								<div class="form-group form-inline">
 									<label class="form-check">
 										<input type="radio" name="formIPFilterAllowDeny" id="formIPFilterAllowDeny0" class="form-check-input" />
-										<span>allow</span>
+										<span>Allow</span>
 									</label>
 									<label class="form-check ml-2">
 										<input type="radio"name="formIPFilterAllowDeny" id="formIPFilterAllowDeny1" class="form-check-input" />
-										<span>eeny</span>
+										<span>Deny</span>
 									</label>
 								</div>
 								<div class="form-group">
-									<span class="col-md-3">filteredipaddr</span>
+									<span class="col-md-3">Filtered IP Addresses</span>
 									<select size="10" id="formIPAddressList" class="col-md-12 form-control-custom"><option></option></select>
 								</div>
-								<button id="btnAddIP" class="btn btn-mini btn-warning" data-toggle="modal" data-target="#filtered_ip"><span>add</span>...</button>
-								<button id="btnRemoveIP" class="btn btn-mini btn-secondary"><span>remove</span></button>
+								<button id="btnAddIP" class="btn btn-mini btn-warning" data-toggle="modal" data-target="#filtered_ip">Add</button>
+								<button id="btnRemoveIP" class="btn btn-mini btn-secondary">Remove</button>
 							</div>
 						</div>
 					</div>
-					<button id="btnApply" class="btn btn-sm btn-primary mt-2"><span>apply</span></button>
+					<div class="col-lg-6 mt-2 text-center">
+						<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -73,21 +74,21 @@ echo $header;
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"><span>filteredipaddrsetup</span></h5>
+				<h6 class="modal-title" id="exampleModalLabel">Filtered IP address setup</h6>
 				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">x</span>
 				</button>
 			</div>
-			<div class="modal-body">
+			<div class="card-body">
 				<div class="form-group form-inline">
-					<span class="col-md-5">IP Address :</span>
+					<span class="col-md-5">IP address</span>
 					<input type="text" id="formIPAddr" class="form-control form-control-sm" />
 				</div>
-				<p class="ml-5"><span>ipformat</span> :<br />xxx.xxx.xxx.xxx<br />xxx.xxx.xxx.xxx/xx<br />xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx<br /></p>
+				<p class="ml-5"><span>IP format</span> :<br />xxx.xxx.xxx.xxx<br />xxx.xxx.xxx.xxx/xx<br />xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx<br /></p>
 			</div>
 			<div class="modal-footer">
-				<button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal"><span>apply</span></button>
-				<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal"><span>cancel</span></button>
+				<button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
+				<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 	</div>
@@ -96,6 +97,14 @@ echo $header;
 </body>
 <?=$footer?>
 <script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+
 function loadIPFConfig(){
 	url = "/uapi-cgi/param.cgi?action=list&format=json&group=IPFILTER";
 	$.getJSON(url, function(response) {
