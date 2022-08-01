@@ -2,6 +2,8 @@
 <!-- origin: https://startbootstrap.com/previews/sb-admin-2 -->
 <html lang="en">
 <?php
+// $_COOKIE['selected_language'] = "korean";
+// print_r($_COOKIE);
 include ("../inc/common.php");
 echo $header;
 
@@ -56,9 +58,16 @@ $href = 'users.html';
     background-color:#eee;
     width:160px;
 }
+/* body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+} */
 </style>
 <body>
-    <div id="wrapper">
+    <div id="wrapper" >
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <?=$top_left_menu?>
             <?=$leftMenu?>

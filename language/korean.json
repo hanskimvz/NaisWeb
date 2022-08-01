@@ -2,6 +2,20 @@
     // Main
     "Live":                 "실시간",
     "Setting":              "설정",
+    "Search":               "검색",
+    "Trigger-Alarm(DO)":    "알람 제어",
+    "Speaker":              "스피커",
+    "Microphone":           "마이크",
+    "Video Control":        "영상 제어",
+    "Pause":                "일시정지",
+    "CPU":                  "CPU",
+    "Memory":               "메모리",
+    "Uptime":               "작동 시간",
+    "Bitrate":              "비트레이트",
+    "Fps":                  "Fps",
+    "RTSP Connect List":    "RTSP 연결 수",
+    "Total":                "총",
+
 
     // config Main menu
     "Set up":               "설정", 
