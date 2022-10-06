@@ -222,92 +222,87 @@ $("input[type=text]").on("change", function () {
 });
 
 
-	var canvas = document.getElementById("canvas");
-	canvas.width=720;
-	canvas.height = 360;
-	var ctx = canvas.getContext('2d');
-	var img =  new Image();
-	// img.src="../images/demo_screen.jpg";
-	ctx.drawImage(img, 0,0,720,360);
-	function render(){
-		img.src="../images/demo_screen.jpg";
-		ctx.drawImage(img, 0,0,720,360);
-	}
-	function main() {
-		render();
-		requestAnimationFrame(main);
-	}
-    // render();
-	main();
+var canvas = document.getElementById("canvas");
+canvas.width=720;
+canvas.height = 360;
+const ctx = canvas.getContext('2d');
+var img =  new Image();
+
+meta_url = "../uapi-cgi/metadata.cgi";
+let n=0;
+
+function drawbox(ctx, x0,y0,w,h){
+    ctx.beginPath();
+    ctx.lineWidth = "1";
+    ctx.strokeStyle = "red";
+    ctx.rect(x0, y0, w, h);
+    ctx.stroke();
+}
+
+
+
+
+function proc_metadata(response){
+    let data = response['data'];
+    
+    data.forEach(function(item) {
+        // console.log(item);
+        x0 = canvas.width  * item['pos_lt'][0] / 0xFFFF;
+        // y0 = canvas.height * item['pos_lt'][1] / 0xFFFF;
+        y0 = canvas.height * item['pos_lt'][1] / 0xFFFF + ((320-240) * item['pos_lt'][1]/0xFFFF)*3;
+        w = canvas.width  * item['width'] / 0xFFFF;
+        h = canvas.height  * item['height'] / 0xFFFF;
+        drawbox(ctx, x0, y0, w, h);
+    });
+}
+
+function render() {
+
+    n++;
+    img.src="../uapi-cgi/snapshot.cgi?n="+n;
+    img.addEventListener("load",()=>{
+        ctx.drawImage(img, 0,0,canvas.width, canvas.height);
+    }); 
+    
+    $.getJSON(meta_url, function(response) {
+	// 	console.log(response);
+        proc_metadata(response);
+
+	});
+
+    if (n>1000)  {
+        n=0;
+    }
+    // console.log(n);
+}
+render();
+
+
+setInterval(() => {
+    render()
+}, 100);
+
+// ctx.drawImage(img, 0,0,canvas.width, canvas.height);
+// function render(i){
+// 	// img.src="../images/demo_screen.jpg";
+//     img.src="../uapi-cgi/snapshot.cgi?n="+ i;
+//     img.addEventListener("load",()=>{
+//         ctx.drawImage(img, 0,0,720,360);
+//     });  
+// 	// ctx.drawImage(img, 0,0,720,360);
+// }
+// function main() {
+// 	console.log(i);
+//     i++;
+//     render(i);
+// 	requestAnimationFrame(main);
+// }
+
+// main();
+
 </script>
 
-<script>
-
-// !function(l) {
-//     "use strict";
-//     l("#sidebarToggle, #sidebarToggleTop").on("click",function(e){
-//         l("body").toggleClass("sidebar-toggled"),l(".sidebar").toggleClass("toggled"),l(".sidebar").hasClass("toggled")&&l(".sidebar .collapse").collapse("hide")
-//     }),
-//     l(window).resize(function(){
-//         l(window).width()<768&&l(".sidebar .collapse").collapse("hide"),l(window).width()<480&&!l(".sidebar").hasClass("toggled")&&(l("body").addClass("sidebar-toggled"),
-//         l(".sidebar").addClass("toggled"),
-//         l(".sidebar .collapse").collapse("hide"))}),
-//         l("body.fixed-nav .sidebar").on("mousewheel DOMMouseScroll wheel",function(e){
-//         var o;768<l(window).width()&&(o=(o=e.originalEvent).wheelDelta||-o.detail,this.scrollTop+=30*(o<0?1:-1),e.preventDefault())
-//     }),
-    
-//     l(document).on("scroll",function(){
-//         100<l(this).scrollTop()?l(".scroll-to-top").fadeIn():l(".scroll-to-top").fadeOut()
-//     }),
-    
-//     l(document).on("click","a.scroll-to-top",function(e){var o=l(this);l("html, body").stop().animate({scrollTop:l(o.attr("href")).offset().top},1e3,"easeInOutExpo"),e.preventDefault()})
-// }(jQuery);
-
-    </script>
 <?php
 exit();
 ?>
 
-<body>
-    <div id="compatible_ie"></div>
-    <div class="container">
-        <?=$top_menu?>
-        <div class="main">
-            <div class="sidebar">
-                <div class="box">
-                    <div class="tab-wrap">
-                        <!-- active tab on page load gets checked attribute -->
-                        <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
-                        <label for="tab1">Option</label>
-
-                        <input type="radio" id="tab2" name="tabGroup1" class="tab" >
-                        <label for="tab2">Status</label>
-
-                        <input type="radio" id="tab3" name="tabGroup1" class="tab">
-                        <label for="tab3" id="tab_ptz" style="display:">PTZ</label>
-
-                        <div class="tab__content"><?=$tab_option?></div>
-                        <div class="tab__content"><?=$tab_status?></div>
-                        <div class="tab__content"><?=$tab_ptz?></div>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <div class="box">
-                    <div id="screen">
-                        <img src="http://49.235.119.5/a.jpg" width="500"></img>
-                        <!-- <canvas height="600"></canvas> -->
-                    </div>
-                    <div id="screen_tools"></div>
-                </div>
-            </div>
-            <div class="clear">&nbsp;</div>            
-        </div>
-    </div>
-</body>
-</html>
-
-<?PHP
-echo $footer;
-exit();
-?>
