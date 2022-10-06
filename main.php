@@ -231,12 +231,22 @@ var img =  new Image();
 meta_url = "../uapi-cgi/metadata.cgi";
 let n=0;
 
-function drawbox(ctx, x0,y0,w,h){
+function drawbox(ctx, x0, y0, w, h){
     ctx.beginPath();
     ctx.lineWidth = "1";
-    ctx.strokeStyle = "red";
+    // ctx.strokeStyle = "red";
     ctx.rect(x0, y0, w, h);
     ctx.stroke();
+}
+
+function drawdot(ctx,x,y){
+    ctx.beginPath();
+    ctx.arc(x, y, 2, 0, 2 * Math.PI, false);
+    // ctx.fillStyle = 'red';
+    ctx.fill();
+    ctx.lineWidth = 0;
+    // ctx.strokeStyle = '#003300';
+    ctx.stroke();    
 }
 
 
@@ -245,41 +255,78 @@ function drawbox(ctx, x0,y0,w,h){
 function proc_metadata(response){
     let data = response['data'];
     
+    ctx.fillStyle = 'blue';
+    ctx.lineWidth = "1";
+    ctx.fillText(response['datetime'], 10 ,10);
+    
     data.forEach(function(item) {
         // console.log(item);
         x0 = canvas.width  * item['pos_lt'][0] / 0xFFFF;
-        // y0 = canvas.height * item['pos_lt'][1] / 0xFFFF;
-        y0 = canvas.height * item['pos_lt'][1] / 0xFFFF + ((320-240) * item['pos_lt'][1]/0xFFFF)*3;
+        y0 = canvas.height * item['pos_lt'][1] / 0xFFFF;
+        // y0 = canvas.height * item['pos_lt'][1] / 0xFFFF + ((320-240) * item['pos_lt'][1]/0xFFFF)*3/2;
         w = canvas.width  * item['width'] / 0xFFFF;
         h = canvas.height  * item['height'] / 0xFFFF;
-        drawbox(ctx, x0, y0, w, h);
+        x_c = canvas.width  * item['pos_cen'][0] / 0xFFFF;
+        y_c = canvas.height  * item['pos_cen'][1] / 0xFFFF;
+        // drawbox(ctx, x0, y0, w, h);
+        // drawdot(ctx,x_c, y_c );
+        
+        ctx.strokeStyle = "red";
+        ctx.fillText(item['cat_item'] + " (" + item['score'] + ")", x0 ,y0-4);
+
+        ctx.beginPath();
+        ctx.rect(x0, y0, w, h);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(x_c, y_c, 1, 0, 2 * Math.PI, false);
+        ctx.stroke(); 
+        
     });
 }
+
+img.src="../uapi-cgi/snapshot.cgi?n="+n;
+img.addEventListener("load",()=>{
+    ctx.drawImage(img, 0,0,canvas.width, canvas.height);
+}); 
 
 function render() {
 
     n++;
     img.src="../uapi-cgi/snapshot.cgi?n="+n;
-    img.addEventListener("load",()=>{
-        ctx.drawImage(img, 0,0,canvas.width, canvas.height);
-    }); 
+ 
+    // img.addEventListener("load",()=>{
+        // ctx.drawImage(img, 0,0,canvas.width, canvas.height);
+    // }); 
     
     $.getJSON(meta_url, function(response) {
 	// 	console.log(response);
         proc_metadata(response);
+        // img.src="../uapi-cgi/snapshot.cgi?n="+n;
+        // proc_metadata(response);
 
 	});
+
 
     if (n>1000)  {
         n=0;
     }
-    // console.log(n);
+    // cnsole.log(n);
 }
-render();
+
+function getMeta(){
+    $.getJSON(meta_url, function(response) {
+        // 	console.log(response);
+            proc_metadata(response);
+
+	});
+}
+// render();
 
 
 setInterval(() => {
-    render()
+    render();
+    // getMeta();
 }, 100);
 
 // ctx.drawImage(img, 0,0,canvas.width, canvas.height);

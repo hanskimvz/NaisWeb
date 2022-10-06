@@ -22,7 +22,6 @@ if (!isset($_GET['action'])){
 
 $fname ="/mnt/db/param.db";
 
-
 if ($_GET['action'] == 'list' && $_GET['table']=='param_tbl'){
     if (!isset($_GET['format'])){
         $_GET['format'] = 'plain';
