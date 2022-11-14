@@ -19,22 +19,25 @@ $sz = shmop_size($shmid);
 
 // print ("shm id:".$shmid.", size:". shmop_size($shmid));
 // shmop_write($shmid, "Hello World!", 0);
+// rs[4:5]  = frame_cnt
+// rs[6:7]  = ts microsecond
+// rs[8:11] = ts second
+// rs[12:15] = obj_cnt
 
 // string shmop_read ( int shmid, int start, int count)
+$read_data = shmop_read($shmid, 0, 16);
+$sz = ord($read_data[12]) | ord($read_data[13]) <<8 | ord($read_data[14]) <<16 | ord($read_data[15])<<24;
+if (!$sz) {
+    $sz = 300000;
+}
+// print ($sz);
+$frame_cnt  = ord($read_data[4]) | ord($read_data[5]) << 8;
+$ts_m       = ord($read_data[6]) | ord($read_data[7]) <<8;
+$ts         = ord($read_data[8]) | ord($read_data[9]) << 8  | ord($read_data[10])<<16 | ord($read_data[11])<<24;
 
-$read_data = shmop_read($shmid, 0, $sz);
-
-// for ($i=0; $i<100; $i++) {  print (ord($read_data[$i]).",");}
-
-$wp =0;
-$frame_cnt = ord($read_data[$wp++]) | ord($read_data[$wp++]) << 8;
-$old_frame_cnt = $frame_cnt;
-$ts_m =  ord($read_data[$wp++]) | ord($read_data[$wp++]) <<8;
-$ts   =  ord($read_data[$wp++]) | ord($read_data[$wp++]) << 8  | ord($read_data[$wp++])<<16 | ord($read_data[$wp++])<<24;
-// $obj_cnt = ord($read_data[$wp++]) | ord($read_data[$wp++]) <<8;
-
+$read_data = shmop_read($shmid, 16, $sz);
 $arr_rs = array();
-for ($i =$wp; $i<100; ){
+for ($i =0; $i<100; ){
     if (ord($read_data[$i]) == 255) {
         break;
     }
@@ -82,6 +85,7 @@ $arr_rs_t = array(
 // print "</pre>";
 
 
+// $json_str = json_encode($arr_rs_t,JSON_NUMERIC_CHECK);
 $json_str = json_encode($arr_rs_t, JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT);
 print $json_str;
 

@@ -1,4 +1,7 @@
 <!DOCTYPE html lang="en">
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
 <?php
 include ("inc/common.php");
 echo $header;
@@ -187,14 +190,21 @@ $stream = ["First Stream", "Second Stream", "Snapshot", "Audio"];
                             <li class="nav-item"><a class="nav-link" href="#tab-3" data-bs-toggle="tab" role="tab"><span>PTZ</span></a></li>
                         </ul>
                     </div>
-
+                    <!-- <span id="frame_cnt"></span> -->
                     <div id="screen" class="card col-xl-10 mt-3">
                         <div class="card-body  pl-0 pr-0 pt-2 pb-0">
-							<canvas id="canvas" class="card-img-top"></canvas>
+							<canvas id="canvas" class="card-img-top" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+                            <canvas id="canvas2" class="card-img-top" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+                            <!-- <canvas id="canvas" class="card-img-top" ></canvas>
+                            <canvas id="canvas2" class="card-img-top" ></canvas> -->
+                            
 						</div>
+                        
                         <!-- <canvas height="600"></canvas> -->
                     </div>
+                    
                     <div id="screen_tools"></div>
+                    
 
                     
 
@@ -209,6 +219,10 @@ $stream = ["First Stream", "Second Stream", "Snapshot", "Audio"];
     </div>
 </body>
 <?php
+
+
+
+
 echo $footer;
 ?>
 <script>
@@ -223,64 +237,54 @@ $("input[type=text]").on("change", function () {
 
 
 var canvas = document.getElementById("canvas");
-canvas.width=720;
-canvas.height = 360;
+var canvas2 = document.getElementById("canvas2");
+// var fr_cnt = document.getElementById("frame_cnt");
+canvas.width=960;
+canvas.height = 540;
+canvas2.width= canvas.width;
+canvas2.height = canvas.height;
+
 const ctx = canvas.getContext('2d');
+const ctx2 = canvas2.getContext('2d');
 var img =  new Image();
 
 meta_url = "../uapi-cgi/metadata.cgi";
 let n=0;
 
-function drawbox(ctx, x0, y0, w, h){
-    ctx.beginPath();
-    ctx.lineWidth = "1";
-    // ctx.strokeStyle = "red";
-    ctx.rect(x0, y0, w, h);
-    ctx.stroke();
-}
-
-function drawdot(ctx,x,y){
-    ctx.beginPath();
-    ctx.arc(x, y, 2, 0, 2 * Math.PI, false);
-    // ctx.fillStyle = 'red';
-    ctx.fill();
-    ctx.lineWidth = 0;
-    // ctx.strokeStyle = '#003300';
-    ctx.stroke();    
-}
-
-
-
-
-function proc_metadata(response){
+function proc_metadata(response) {
+    ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+    if (!response['timestamp']) {
+        return false;
+    }
+    
     let data = response['data'];
-    
-    ctx.fillStyle = 'blue';
-    ctx.lineWidth = "1";
-    ctx.fillText(response['datetime'], 10 ,10);
-    
+    ctx2.font = "normal bold 20px Arial, sans-serif";
+    ctx2.fillStyle = 'blue';
+    ctx2.fillText(response['datetime'], 10 ,20);
+   
+    ctx2.font = "normal bold 16px Arial, sans-serif";
+    ctx2.fillStyle = 'red';
+    ctx2.lineWidth = "1";
     data.forEach(function(item) {
         // console.log(item);
         x0 = canvas.width  * item['pos_lt'][0] / 0xFFFF;
         y0 = canvas.height * item['pos_lt'][1] / 0xFFFF;
-        // y0 = canvas.height * item['pos_lt'][1] / 0xFFFF + ((320-240) * item['pos_lt'][1]/0xFFFF)*3/2;
         w = canvas.width  * item['width'] / 0xFFFF;
         h = canvas.height  * item['height'] / 0xFFFF;
         x_c = canvas.width  * item['pos_cen'][0] / 0xFFFF;
         y_c = canvas.height  * item['pos_cen'][1] / 0xFFFF;
-        // drawbox(ctx, x0, y0, w, h);
-        // drawdot(ctx,x_c, y_c );
         
-        ctx.strokeStyle = "red";
-        ctx.fillText(item['cat_item'] + " (" + item['score'] + ")", x0 ,y0-4);
+        ctx2.strokeStyle = "yellow";
+        ctx2.fillText(item['cat_item'] + " (" + item['score'] + ")", x0+4 ,y0+14);
+        // ctx2.fillText(item['cat_item'] + " (" + item['score'] + ")[" + item['pos_lt'][0] +"," + item['pos_lt'][1] + "]", x0 ,y0-4 );
 
-        ctx.beginPath();
-        ctx.rect(x0, y0, w, h);
-        ctx.stroke();
+        ctx2.beginPath();
+        ctx2.rect(x0, y0, w, h);
+        ctx2.stroke();
 
-        ctx.beginPath();
-        ctx.arc(x_c, y_c, 1, 0, 2 * Math.PI, false);
-        ctx.stroke(); 
+        ctx2.beginPath();
+        ctx2.arc(x_c, y_c, 1, 0, 2 * Math.PI, false);
+        ctx2.stroke(); 
         
     });
 }
@@ -290,66 +294,50 @@ img.addEventListener("load",()=>{
     ctx.drawImage(img, 0,0,canvas.width, canvas.height);
 }); 
 
+
 function render() {
-
     n++;
-    img.src="../uapi-cgi/snapshot.cgi?n="+n;
- 
-    // img.addEventListener("load",()=>{
+    if (n%2 == 0) {
+        img.src="../uapi-cgi/snapshot.cgi?n="+n;
         // ctx.drawImage(img, 0,0,canvas.width, canvas.height);
-    // }); 
-    
-    $.getJSON(meta_url, function(response) {
-	// 	console.log(response);
-        proc_metadata(response);
-        // img.src="../uapi-cgi/snapshot.cgi?n="+n;
-        // proc_metadata(response);
-
-	});
-
-
-    if (n>1000)  {
-        n=0;
     }
-    // cnsole.log(n);
 }
 
 function getMeta(){
     $.getJSON(meta_url, function(response) {
         // 	console.log(response);
-            proc_metadata(response);
-
+        proc_metadata(response);
 	});
 }
 // render();
 
-
 setInterval(() => {
     render();
-    // getMeta();
-}, 100);
-
-// ctx.drawImage(img, 0,0,canvas.width, canvas.height);
-// function render(i){
-// 	// img.src="../images/demo_screen.jpg";
-//     img.src="../uapi-cgi/snapshot.cgi?n="+ i;
-//     img.addEventListener("load",()=>{
-//         ctx.drawImage(img, 0,0,720,360);
-//     });  
-// 	// ctx.drawImage(img, 0,0,720,360);
-// }
-// function main() {
-// 	console.log(i);
-//     i++;
-//     render(i);
-// 	requestAnimationFrame(main);
-// }
-
-// main();
+    getMeta();
+}, 50);
 
 </script>
 
+
+
 <?php
-exit();
+// $systemid = 0x000f6085; // System ID for the shared memory segment 
+
+// $shmid = shmop_open($systemid, "a", 0, 0); 
+
+// for ($i=0; $i<500; $i++) {
+//     $read_data = shmop_read($shmid, 0, 16);
+//     $sz = ord($read_data[12]) | ord($read_data[13]) <<8 | ord($read_data[14]) <<16 | ord($read_data[15])<<24;
+//     if (!$sz) {
+//         $sz = 300000;
+//     }
+//     $img = shmop_read($shmid, 16, $sz);
+//     $img_b64 = base64_encode($img);
+//     echo '<script>img.src="data:image/jpg;base64,'.$img_b64.'";</script>';
+//     usleep(10);
+// }
+// shmop_close($shmid);
+
+
 ?>
 
